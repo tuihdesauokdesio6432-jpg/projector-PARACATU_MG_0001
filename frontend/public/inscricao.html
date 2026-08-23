@@ -170,12 +170,12 @@
 
 <div id="centro">
 <div id="centroCentro">
-<h2 class="tag">Concursos</h2>
+<h2 class="tag">Seletivos</h2>
 <div class="bloco">
 <style>.TabbedPanels{margin:0px;padding:0px;float:left;clear:none;width:100%}.TabbedPanelsTabGroup{margin:0px;padding:0px;background-color:#FFFFFF}.TabbedPanelsTab{position:relative;top:1px;float:left;padding:4px 10px;margin:0px 1px 0px 1px;font:bold 12px sans-serif;background-color:#F2F2F2;list-style:none;border-left:solid 1px #CCC;border-bottom:solid 1px #999;border-top:solid 1px #999;border-right:solid 1px #999;-moz-user-select:none;-khtml-user-select:none;cursor:pointer;color:#767676}.TabbedPanelsTabSelected{background-color:#FFFFFF;border-bottom:1px solid #FFF}.TabbedPanelsContentGroup{clear:both;border-left:solid 1px #CCC;border-bottom:solid 1px #CCC;border-top:solid 1px #999;border-right:solid 1px #999;background-color:#FFFFFF}.TabbedPanelsContent{padding:10px;color:#FFFFFF}.TabbedPanelsContent table,p,td,tr,span,h3,form{color:#3E3D3D}</style>
 <div class="TabbedPanels TabbedPanelsTabFocused" id="TabbedPanels">
 <ul class="TabbedPanelsTabGroup">
-<li class="TabbedPanelsTab" onclick="window.location.href='/'" style="cursor:pointer" tabindex="0"><a data-testid="tab-dados-do-concurso" href="/" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%">Dados do Concurso</a></li>
+<li class="TabbedPanelsTab" onclick="window.location.href='/'" style="cursor:pointer" tabindex="0"><a data-testid="tab-dados-do-concurso" href="/" style="color:inherit;text-decoration:none;display:block;width:100%;height:100%">Dados do Seletivo</a></li>
 <li class="TabbedPanelsTab TabbedPanelsTabSelected" tabindex="0">Inscrições</li>
 <li class="TabbedPanelsTab" tabindex="0">Área do Candidato</li>
 </ul>
@@ -184,13 +184,55 @@
 </div>
 <div class="TabbedPanelsContent TabbedPanelsContentVisible" style="display:block"><style class="sf-hidden"><!----></style>
 <style class="sf-hidden"><!--.style4{font-size:14px}.fonteMenor{font-size:12px}--></style>
-<h3>Inscrição de Concurso</h3>
+<h3>Inscrição de Seletivo</h3>
 <form action="javascript:void(0)" id="formInsc" method="post" name="formInsc" onsubmit="return window.__handleInscricaoSubmit(event)">
 <fieldset>
 <legend>Seleção de Cargo</legend>
 <table border="0" cellpadding="3" cellspacing="5" width="500">
 <tbody><tr>
 <td bgcolor="#FFFFFF" colspan="4" id="aguarde"> </td>
+</tr>
+<tr>
+<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Núcleo Regional de Educação: <span style="color:#c00">*</span></td>
+</tr>
+<tr>
+<td colspan="4" id="nresel" width="67%">
+<select class="input2 fonteMenor" id="nre" name="nre" required style="width:860px">
+<option selected="" value="">Selecione</option>
+<option value="APUCARANA">APUCARANA</option>
+<option value="AREA METROP.NORTE">AREA METROP.NORTE</option>
+<option value="AREA METROP.SUL">AREA METROP.SUL</option>
+<option value="ASSIS CHATEAUBRIAND">ASSIS CHATEAUBRIAND</option>
+<option value="CAMPO MOURAO">CAMPO MOURAO</option>
+<option value="CASCAVEL">CASCAVEL</option>
+<option value="CIANORTE">CIANORTE</option>
+<option value="CORNELIO PROCOPIO">CORNELIO PROCOPIO</option>
+<option value="CURITIBA">CURITIBA</option>
+<option value="DOIS VIZINHOS">DOIS VIZINHOS</option>
+<option value="FOZ DO IGUACU">FOZ DO IGUACU</option>
+<option value="FRANCISCO BELTRAO">FRANCISCO BELTRAO</option>
+<option value="GOIOERE">GOIOERE</option>
+<option value="GUARAPUAVA">GUARAPUAVA</option>
+<option value="IBAITI">IBAITI</option>
+<option value="IRATI">IRATI</option>
+<option value="IVAIPORA">IVAIPORA</option>
+<option value="JACAREZINHO">JACAREZINHO</option>
+<option value="LARANJEIRAS DO SUL">LARANJEIRAS DO SUL</option>
+<option value="LOANDA">LOANDA</option>
+<option value="LONDRINA">LONDRINA</option>
+<option value="MARINGA">MARINGA</option>
+<option value="PARANAGUA">PARANAGUA</option>
+<option value="PARANAVAI">PARANAVAI</option>
+<option value="PATO BRANCO">PATO BRANCO</option>
+<option value="PITANGA">PITANGA</option>
+<option value="PONTA GROSSA">PONTA GROSSA</option>
+<option value="TELEMACO BORBA">TELEMACO BORBA</option>
+<option value="TOLEDO">TOLEDO</option>
+<option value="UMUARAMA">UMUARAMA</option>
+<option value="UNIAO DA VITORIA">UNIAO DA VITORIA</option>
+<option value="WENCESLAU BRAZ">WENCESLAU BRAZ</option>
+</select>
+</td>
 </tr>
 <tr>
 <td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Cargo:</td>
@@ -1001,6 +1043,7 @@ de 18 anos:</span></td>
     return {
       concurso: 'PROCESSO SELETIVO SIMPLIFICADO - PSS SEED 2026 — EDITAL 52/2026 - GS/SEED',
       cargo: textOfSelect('cargo'),
+      nre: textOfSelect('nre'),
       valor: valorOfCargo(),
       turno: turnoOfCargo(),
       cpf: (getEl('ins_cpf')||{}).value || '',
