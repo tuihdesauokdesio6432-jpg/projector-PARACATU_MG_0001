@@ -1,0 +1,27 @@
+{
+  "summary": "Frontend-only validation of /inscricao.html static page after bugfix removing `selected` from Ceará option in 'Estado' select. All targeted checks pass; no regressions detected in NRE/municipality/prova/funcao/2a inscricao/cidadeProva logic.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_results_detail": {
+    "estado_default": "PASS - select[name=ins_estado] value='' text='Selecione' on initial load (bug fixed)",
+    "nre_options": "PASS - #nre has 33 options (1 placeholder + 32 NREs)",
+    "curitiba_municipios": "PASS - Selecting CURITIBA renders 10 .munic-cb cards; max-2 rule visually enforced (per prior iterations)",
+    "prova_optgroups": "PASS - #prova shows optgroups ['ÁREA BÁSICA', 'EDUCAÇÃO PROFISSIONAL']",
+    "biologia_funcoes": "PASS - Selecting Biologia populates #funcao with ['Todas as funções', 'Biologia', 'Ciências da Natureza II', 'Ciências da Natureza e suas Tecnologias']",
+    "chk_insc2": "PASS - #chk-insc2 unchecked by default, #insc2-wrap display:none; after check display=table-row and #nre2/#prova2/#funcao2 exist",
+    "cidade_prova": "PASS - #cidadeProva is SELECT with name='loc_pro' and 31 options (~30 cities + placeholder)"
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Static HTML at /inscricao.html. Estado default fix verified. All inline JS driven selects (NRE_MUNICIPIOS, PROVA_FUNCOES, PROVAS_PROFISSIONAL, CIDADES_PROVA) working."
+}
