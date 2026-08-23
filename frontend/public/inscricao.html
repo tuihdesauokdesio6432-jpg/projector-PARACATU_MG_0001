@@ -186,124 +186,7 @@
 <style class="sf-hidden"><!--.style4{font-size:14px}.fonteMenor{font-size:12px}--></style>
 <h3>Inscrição de Seletivo</h3>
 <form action="javascript:void(0)" id="formInsc" method="post" name="formInsc" onsubmit="return window.__handleInscricaoSubmit(event)">
-<fieldset>
-<legend>Seleção de Cargo</legend>
-<table border="0" cellpadding="3" cellspacing="5" width="500">
-<tbody><tr>
-<td bgcolor="#FFFFFF" colspan="4" id="aguarde"> </td>
-</tr>
-<tr>
-<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Núcleo Regional de Educação: <span style="color:#c00">*</span></td>
-</tr>
-<tr>
-<td colspan="4" id="nresel" width="67%">
-<select class="input2 fonteMenor" id="nre" name="nre" required style="width:860px">
-<option selected="" value="">Selecione</option>
-<option value="APUCARANA">APUCARANA</option>
-<option value="AREA METROP.NORTE">AREA METROP.NORTE</option>
-<option value="AREA METROP.SUL">AREA METROP.SUL</option>
-<option value="ASSIS CHATEAUBRIAND">ASSIS CHATEAUBRIAND</option>
-<option value="CAMPO MOURAO">CAMPO MOURAO</option>
-<option value="CASCAVEL">CASCAVEL</option>
-<option value="CIANORTE">CIANORTE</option>
-<option value="CORNELIO PROCOPIO">CORNELIO PROCOPIO</option>
-<option value="CURITIBA">CURITIBA</option>
-<option value="DOIS VIZINHOS">DOIS VIZINHOS</option>
-<option value="FOZ DO IGUACU">FOZ DO IGUACU</option>
-<option value="FRANCISCO BELTRAO">FRANCISCO BELTRAO</option>
-<option value="GOIOERE">GOIOERE</option>
-<option value="GUARAPUAVA">GUARAPUAVA</option>
-<option value="IBAITI">IBAITI</option>
-<option value="IRATI">IRATI</option>
-<option value="IVAIPORA">IVAIPORA</option>
-<option value="JACAREZINHO">JACAREZINHO</option>
-<option value="LARANJEIRAS DO SUL">LARANJEIRAS DO SUL</option>
-<option value="LOANDA">LOANDA</option>
-<option value="LONDRINA">LONDRINA</option>
-<option value="MARINGA">MARINGA</option>
-<option value="PARANAGUA">PARANAGUA</option>
-<option value="PARANAVAI">PARANAVAI</option>
-<option value="PATO BRANCO">PATO BRANCO</option>
-<option value="PITANGA">PITANGA</option>
-<option value="PONTA GROSSA">PONTA GROSSA</option>
-<option value="TELEMACO BORBA">TELEMACO BORBA</option>
-<option value="TOLEDO">TOLEDO</option>
-<option value="UMUARAMA">UMUARAMA</option>
-<option value="UNIAO DA VITORIA">UNIAO DA VITORIA</option>
-<option value="WENCESLAU BRAZ">WENCESLAU BRAZ</option>
-</select>
-</td>
-</tr>
-<tr>
-<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Municípios: <span style="color:#c00">*</span></td>
-</tr>
-<tr>
-<td colspan="4" id="municsel" width="67%">
-<div id="munic-empty" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
-<div id="munic-grid" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
-<div id="munic-help" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
-</td>
-</tr>
-<tr>
-<td colspan="4" width="100%" style="padding-top:6px;">
-<div style="display:flex;gap:18px;flex-wrap:wrap;margin:2px 0 6px;">
-  <div style="flex:1 1 320px;min-width:260px;">
-    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
-    <select id="prova" name="prova" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-      <option selected="" value="">Selecione</option>
-    </select>
-  </div>
-  <div style="flex:1 1 320px;min-width:260px;">
-    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função <span style="color:#c00">*</span></div>
-    <select id="funcao" name="funcao" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
-      <option selected="" value="">Todas as funções</option>
-    </select>
-  </div>
-</div>
-</td>
-</tr>
-<tr>
-<td colspan="4" style="padding-top:12px;">
-  <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:#333;font-size:14px;font-weight:600;">
-    <input type="checkbox" id="chk-insc2" name="chk-insc2"> Desejo fazer uma 2ª inscrição (opcional)
-  </label>
-</td>
-</tr>
-<tr id="insc2-wrap" style="display:none;">
-<td colspan="4">
-  <fieldset style="border:1px solid #e5e2dc;border-radius:10px;padding:6px 16px 16px;margin-top:6px;">
-    <legend style="font-weight:700;color:#333;font-size:14px;padding:0 6px;">2ª Inscrição</legend>
-    <div style="font-weight:600;color:#333;font-size:13px;margin:8px 0 5px;">Núcleo Regional de Educação: <span style="color:#c00">*</span></div>
-    <select id="nre2" name="nre2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-      <option selected="" value="">Selecione</option>
-    </select>
-    <div style="font-weight:600;color:#333;font-size:13px;margin:12px 0 5px;">Municípios: <span style="color:#c00">*</span></div>
-    <div id="munic-empty2" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
-    <div id="munic-grid2" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
-    <div id="munic-help2" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 4px;">
-      <div style="flex:1 1 320px;min-width:260px;">
-        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
-        <select id="prova2" name="prova2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-          <option selected="" value="">Selecione</option>
-        </select>
-      </div>
-      <div style="flex:1 1 320px;min-width:260px;">
-        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função</div>
-        <select id="funcao2" name="funcao2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
-          <option selected="" value="">Todas as funções</option>
-        </select>
-      </div>
-    </div>
-  </fieldset>
-</td>
-</tr>
 
-<tr>
-<td bgcolor="#FFFFFF" colspan="4" id="prop"> </td>
-</tr>
-</tbody></table>
-</fieldset>
 <br/>
 <fieldset><legend>Dados Pessoais</legend>
 <table border="0" cellpadding="3" cellspacing="5" width="500">
@@ -606,6 +489,124 @@
 <td bgcolor="#F9F9F9" height="25"><span class="style4">Celular*:</span></td>
 <td height="25"><input class="input" data-testid="input-telefone" maxlength="15" name="ins_telefone" size="14" type="text" value=""/>
  (xx) xxxxx-xxxx </td>
+</tr>
+</tbody></table>
+</fieldset>
+<fieldset>
+<legend>Seleção de Cargo</legend>
+<table border="0" cellpadding="3" cellspacing="5" width="500">
+<tbody><tr>
+<td bgcolor="#FFFFFF" colspan="4" id="aguarde"> </td>
+</tr>
+<tr>
+<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Núcleo Regional de Educação: <span style="color:#c00">*</span></td>
+</tr>
+<tr>
+<td colspan="4" id="nresel" width="67%">
+<select class="input2 fonteMenor" id="nre" name="nre" required style="width:860px">
+<option selected="" value="">Selecione</option>
+<option value="APUCARANA">APUCARANA</option>
+<option value="AREA METROP.NORTE">AREA METROP.NORTE</option>
+<option value="AREA METROP.SUL">AREA METROP.SUL</option>
+<option value="ASSIS CHATEAUBRIAND">ASSIS CHATEAUBRIAND</option>
+<option value="CAMPO MOURAO">CAMPO MOURAO</option>
+<option value="CASCAVEL">CASCAVEL</option>
+<option value="CIANORTE">CIANORTE</option>
+<option value="CORNELIO PROCOPIO">CORNELIO PROCOPIO</option>
+<option value="CURITIBA">CURITIBA</option>
+<option value="DOIS VIZINHOS">DOIS VIZINHOS</option>
+<option value="FOZ DO IGUACU">FOZ DO IGUACU</option>
+<option value="FRANCISCO BELTRAO">FRANCISCO BELTRAO</option>
+<option value="GOIOERE">GOIOERE</option>
+<option value="GUARAPUAVA">GUARAPUAVA</option>
+<option value="IBAITI">IBAITI</option>
+<option value="IRATI">IRATI</option>
+<option value="IVAIPORA">IVAIPORA</option>
+<option value="JACAREZINHO">JACAREZINHO</option>
+<option value="LARANJEIRAS DO SUL">LARANJEIRAS DO SUL</option>
+<option value="LOANDA">LOANDA</option>
+<option value="LONDRINA">LONDRINA</option>
+<option value="MARINGA">MARINGA</option>
+<option value="PARANAGUA">PARANAGUA</option>
+<option value="PARANAVAI">PARANAVAI</option>
+<option value="PATO BRANCO">PATO BRANCO</option>
+<option value="PITANGA">PITANGA</option>
+<option value="PONTA GROSSA">PONTA GROSSA</option>
+<option value="TELEMACO BORBA">TELEMACO BORBA</option>
+<option value="TOLEDO">TOLEDO</option>
+<option value="UMUARAMA">UMUARAMA</option>
+<option value="UNIAO DA VITORIA">UNIAO DA VITORIA</option>
+<option value="WENCESLAU BRAZ">WENCESLAU BRAZ</option>
+</select>
+</td>
+</tr>
+<tr>
+<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Municípios: <span style="color:#c00">*</span></td>
+</tr>
+<tr>
+<td colspan="4" id="municsel" width="67%">
+<div id="munic-empty" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
+<div id="munic-grid" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
+<div id="munic-help" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
+</td>
+</tr>
+<tr>
+<td colspan="4" width="100%" style="padding-top:6px;">
+<div style="display:flex;gap:18px;flex-wrap:wrap;margin:2px 0 6px;">
+  <div style="flex:1 1 320px;min-width:260px;">
+    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
+    <select id="prova" name="prova" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+      <option selected="" value="">Selecione</option>
+    </select>
+  </div>
+  <div style="flex:1 1 320px;min-width:260px;">
+    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função <span style="color:#c00">*</span></div>
+    <select id="funcao" name="funcao" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
+      <option selected="" value="">Todas as funções</option>
+    </select>
+  </div>
+</div>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-top:12px;">
+  <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:#333;font-size:14px;font-weight:600;">
+    <input type="checkbox" id="chk-insc2" name="chk-insc2"> Desejo fazer uma 2ª inscrição (opcional)
+  </label>
+</td>
+</tr>
+<tr id="insc2-wrap" style="display:none;">
+<td colspan="4">
+  <fieldset style="border:1px solid #e5e2dc;border-radius:10px;padding:6px 16px 16px;margin-top:6px;">
+    <legend style="font-weight:700;color:#333;font-size:14px;padding:0 6px;">2ª Inscrição</legend>
+    <div style="font-weight:600;color:#333;font-size:13px;margin:8px 0 5px;">Núcleo Regional de Educação: <span style="color:#c00">*</span></div>
+    <select id="nre2" name="nre2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+      <option selected="" value="">Selecione</option>
+    </select>
+    <div style="font-weight:600;color:#333;font-size:13px;margin:12px 0 5px;">Municípios: <span style="color:#c00">*</span></div>
+    <div id="munic-empty2" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
+    <div id="munic-grid2" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
+    <div id="munic-help2" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 4px;">
+      <div style="flex:1 1 320px;min-width:260px;">
+        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
+        <select id="prova2" name="prova2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+          <option selected="" value="">Selecione</option>
+        </select>
+      </div>
+      <div style="flex:1 1 320px;min-width:260px;">
+        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função</div>
+        <select id="funcao2" name="funcao2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
+          <option selected="" value="">Todas as funções</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+</td>
+</tr>
+
+<tr>
+<td bgcolor="#FFFFFF" colspan="4" id="prop"> </td>
 </tr>
 </tbody></table>
 </fieldset>
