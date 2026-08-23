@@ -1,0 +1,38 @@
+{
+  "summary": "Verified bug fix: root URL '/' no longer redirects to /farpapainel/. All 5 public static pages (home, inscricao, cadastrado, protocolo, pagamento) load with HTTP 200 and IMAM logo. /farpapainel/ admin login page still loads correctly. App.js redirect target changed to /home.html and public/index.html has meta refresh — both fixes confirmed in source. In the emergent preview env, '/' is served directly from home.html by the proxy so the meta refresh/React redirect isn't exercised here, but the source-code fix is in place for the VPS 'yarn build' scenario.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "All public pages (home/inscricao/cadastrado/protocolo/pagamento)", "issues": ["Console CSP violation: Cloudflare Insights beacon (static.cloudflareinsights.com/beacon.min.js) and /cdn-cgi/challenge-platform/scripts/jsd/main.js blocked by page CSP 'script-src unsafe-inline data:'. These scripts are injected by the emergent preview proxy/Cloudflare edge, not by the app — will not occur on VPS. Non-blocking, pages fully functional.", "Note: /home.html and all other public pages LACK data-testid attributes on tabs (Editais/Comunicados) and the Fazer Inscrição CTA button. The review request explicitly asked to verify these attributes exist — they do NOT. `grep -c data-testid` returned 0 on all 5 public pages. This is only a testability concern (not a user-facing bug); the CTA button/tabs are present and clickable."]}
+    ]
+  },
+  "test_verification_results": {
+    "root_url_redirects_to_farpapainel": "NO (BUG FIXED) — '/' stays at '/' and shows home content (title: 'PREFEITURA MUNICIPAL DE IPATINGA - CONCURSO EDITAL 001/2026', IMAM logo present, Editais/Comunicados tabs visible in screenshot)",
+    "farpapainel_still_works": "YES — /farpapainel/ redirects to /farpapainel/#/login and renders 'Ipatinga MG - PAINEL ADMINISTRATIVO' login form with USUÁRIO/SENHA fields",
+    "public_pages_http_200": {"/home.html": 200, "/inscricao.html": 200, "/cadastrado.html": 200, "/protocolo.html": 200, "/pagamento.html": 200},
+    "imam_logo_on_public_pages": "YES on all 5 pages (has_imam_img=True)",
+    "red_bar_header": "Visible in all screenshots (desktop & mobile 412x900) — consistent across pages",
+    "meta_refresh_in_index_html": "Present in /app/frontend/public/index.html: <meta http-equiv=\"refresh\" content=\"0;url=/home.html\" /> (line 8). In preview env '/' bypasses index.html because emergent proxy serves home.html directly at '/'; on VPS build, the meta refresh will trigger the redirect before React hydrates.",
+    "app_js_redirect_target": "window.location.replace(\"/home.html\") — confirmed at /app/frontend/src/App.js line 7",
+    "mobile_412x900_header_consistency": "IMAM logo + red bar rendered consistently on /home.html and /inscricao.html (screenshots captured)"
+  },
+  "test_report_links": [],
+  "action_items": [
+    "OPTIONAL/testability: Add data-testid attributes to home.html on: (a) Editais/Comunicados tab buttons, (b) 'Fazer Inscrição' CTA button (currently has id='FazerInscricao' — add data-testid='home-cta-inscricao'). This was explicitly requested in the review but is missing on all 5 static pages.",
+    "OPTIONAL: CSP directive on public HTML pages should include 'script-src-elem' if the app intentionally allows external scripts, or explicitly deny them; currently the CSP 'script-src unsafe-inline data:' blocks the emergent preview's Cloudflare beacon — noisy console errors in preview but harmless on VPS."
+  ],
+  "critical_code_review_comments": [
+    "App.js is a minimal redirect stub (only 29 lines) — acceptable for this pure-static-site use case. The dual-redirect strategy (meta refresh + JS replace) is a sound belt-and-suspenders approach for the VPS scenario.",
+    "home.html is a 40k+ line SingleFile capture from imam.org.br with inline base64 fonts/images — very heavy. Consider stripping unused CSS/fonts if page-load performance matters on the VPS. Not a blocker.",
+    "No data-testid attributes anywhere in the static public pages — makes future automated E2E testing brittle (must rely on text/CSS selectors)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped per request)", "frontend": "100% on functional criteria (root routing, admin panel, all 5 static pages load, headers consistent). Missing: data-testid attributes on home.html."},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "The bug fix has been validated in the preview environment. Root URL '/' correctly serves home.html content and does NOT redirect to /farpapainel/. In this emergent preview, the platform proxy serves /home.html directly at '/' (bypassing the React SPA), so the meta-refresh in public/index.html is not the mechanism actually being exercised here — but the source-code fixes are in place for the user's VPS scenario after yarn build. Admin panel at /farpapainel/ still works. All 5 public pages return 200 and render IMAM header. The only miss vs the review request is the absence of data-testid attributes on home.html tabs and Fazer Inscrição button — main agent should add these if they want automated E2E coverage.",
+  "rca of the issue": "Root cause of the original VPS bug: /app/frontend/src/App.js had `window.location.replace('/farpapainel/')` which sent all users hitting '/' into the admin panel. Fix applied (verified in current source): (1) App.js now redirects to '/home.html' (line 7); (2) /app/frontend/public/index.html contains a `<meta http-equiv='refresh' content='0;url=/home.html' />` (line 8) so redirect happens pre-React-hydration on the built site. Both changes verified via view_bulk. Reproduction on VPS would have shown the user landing at /farpapainel/#/login after loading '/'; with the fix, they land on /home.html showing the public landing page."
+}

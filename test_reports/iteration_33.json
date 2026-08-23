@@ -1,0 +1,27 @@
+{
+  "summary": "Verified access tracking bug fix end-to-end. The tracking <script> re-added to /app/frontend/public/index.html fires POST /api/track/access on landing page load. Backend correctly (a) inserts an access doc on first visit, (b) deduplicates repeat visits from same IP+device within 30 min, (c) ignores non-home pages (/inscricao.html returned skipped:not_home), (d) enriches with IP geolocation. Admin dashboard KPI 'Acessos' correctly reflects the count (=1) and the 'Atividade em tempo real' feed shows the new access event with Council Bluffs/IA + Desktop badge.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "/donaspainel login", "issues": ["Login form inputs have no name/id/data-testid attributes and no visible labels associated (only 2 unnamed inputs) — minor testability/a11y concern"]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "admin_routes.py: track_access uses IP+device 30-min window for dedup which is reasonable, but IP alone (behind proxy) can collide for many corporate users; consider adding a lightweight client-side fingerprint or cookie ID for better uniqueness.",
+    "admin_routes.py line 205: typo-tolerant check '/donainel' is fine but relies on client sending its own path; server should still enforce whitelist which it does (allowed_paths) — OK.",
+    "Landing tracking uses fetch with keepalive:true — good; response body is empty from client perspective because backend returns JSON but keepalive requests don't always expose body to consumers; not a functional issue.",
+    "Login form (donaspainel) inputs lack data-testid/name attributes; adding data-testid=\"admin-username\" and \"admin-password\" would improve automation."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "100%"},
+  "test_credentials": "donas / Seinao10@@ at /donaspainel (works)",
+  "seed_data_creation": "Cleared 'accesses' collection before test (delete_many). Test visit inserted 1 doc: IP 35.184.53.215, device desktop, page '/', Council Bluffs/IA.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "The tracking script is embedded at the bottom of /app/frontend/public/index.html and works. KPI endpoint /api/admin/dashboard/kpis returns 'acessos' from the 'accesses' collection. Dedup is per IP+device/30min. Only landing paths in allowed_paths increment (see admin_routes.py:209).",
+  "rca of the issue": "Root cause was correctly identified by main agent: the rebuilt index.html was missing the tracking script that posts to /api/track/access. Fix verified — script is now present (lines 217-235) and executes on every landing page load. Backend endpoint, dedup logic, and admin KPI reading were all functioning correctly; only the client emitter was missing."
+}

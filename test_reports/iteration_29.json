@@ -1,0 +1,23 @@
+{
+  "summary": "VPS-export audit completed. Filesystem scan for forbidden strings (emergentagent.com, inscricao-admin.preview, farpa/Farpa/FARPA) returned 0 hits in productive code (html/js/jsx/py/json/md), excluding node_modules, build, .git, test_reports, tmp and /public/donainel bundle folder. All 10 backend smoke tests passed. Playwright test on /donaspainel: login with donas/Seinao10@@ succeeds, navigates to #/dashboard, tab title = 'Painel Guarda Civil Sobral-CE', sidebar user card shows 'donas (root) / Administrador', ZERO occurrences of 'farpa' in body. Legacy /farpapainel does not serve admin bundle. /api/admin/dashboard/kpis is JWT-protected (401 without token, 200 with token). Home modal shows exact new text with 16/08/2026 deadline. /comprovante shows exact new Obs text. App is coherent and ready to export to VPS.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "test_report_links": [
+    "/app/backend/tests/test_vps_export_audit.py",
+    "/app/test_reports/pytest/vps_audit.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Recharts warnings on dashboard: 'The width(-1) and height(-1) of chart should be greater than 0' - cosmetic React warning during initial render, non-blocking. Consider setting minWidth/minHeight on ResponsiveContainer parent for a cleaner console.",
+    "Cache-buster query string (?v=pmsp20260814d) on the pre-compiled admin bundle works, but on VPS make sure nginx/Caddy honors query-string variance for cache invalidation (or bump filename hash directly).",
+    "Farpapainel legacy route currently 200s with public home content (fallback). Consider adding an explicit 301 -> /donaspainel to guide any bookmarked users."
+  ],
+  "updated_files": ["/app/backend/tests/test_vps_export_audit.py"],
+  "success_rate": {"backend": "100% (10/10)", "frontend": "100%"},
+  "test_credentials": "Admin: donas / Seinao10@@ (working). Legacy admin farpa/Ads102030 correctly returns 401.",
+  "seed_data_creation": "None (used existing seed_admin donas).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "This iteration audits pre-VPS-export coherence. Test file /app/backend/tests/test_vps_export_audit.py covers: /api/, home modal text, /inscricao.html, /comprovante text, admin login donas OK / farpa 401, /donaspainel serves SPA with bundle /donainel/static/js/main.fda9cfa5.js, /farpapainel does not serve admin bundle, /api/admin/dashboard/kpis JWT-protected. Reuse this file as regression before any VPS-related change.",
+  "rca of the issue": "N/A - no issues found."
+}

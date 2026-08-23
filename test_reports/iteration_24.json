@@ -1,0 +1,39 @@
+{
+  "summary": "Tested inscricao.html static form at /inscricao. 7 of 8 test scenarios PASSED (fields enabled, CPF mask, CPF invalid validation with red color, CPF valid validation, field order CEP-first, CEP not-found fallback, regression endpoints 200). 1 CRITICAL BUG: CEP autofill (feature 6) is broken because the HTML contains a <meta http-equiv=\"content-security-policy\"> tag (leftover from SingleFile page capture) with 'default-src none' that blocks all fetch() calls to /api/cep/{cep}. Backend /api/cep endpoint itself works correctly (200 for 01310100, 404 for 99999999).",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [
+      {
+        "flow": "CEP autofill (feature 6)",
+        "issue": "Fetch to /api/cep/{cep} is blocked by CSP meta tag embedded in inscricao.html. Console errors: 'Connecting to https://.../api/cep/01310100 violates the following Content Security Policy directive: default-src none. Note that connect-src was not explicitly set, so default-src is used as a fallback.' Endereco/Bairro/Estado/Cidade/Complemento are NOT auto-populated after typing 01310100 CEP and blurring. The endpoint itself returns 200 with correct payload (verified via curl).",
+        "affected_selectors": ["[data-testid=\"input-endereco\"]", "[data-testid=\"input-bairro\"]", "[data-testid=\"input-complemento\"]", "[data-testid=\"select-estado\"]", "[data-testid=\"select-cidade\"]"]
+      }
+    ],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [
+    "CRITICAL: Remove or modify the '<meta http-equiv=content-security-policy content=\"default-src none; ...; script-src unsafe-inline data:; ...\">' tag inside /app/frontend/public/inscricao.html (leftover from SingleFile page capture at top of <html>). Either delete this meta tag entirely OR add 'connect-src self' to allow fetch to /api/cep/*. Otherwise the /api/cep proxy call is blocked in browser (backend endpoint itself works fine — curl returns 200 with Av Paulista data). After removing CSP, retest feature 6 (autofill) and feature 7 (CEP not found fallback).",
+    "Optional: Also check if the CSP style-src blocking causes any styling issues (currently only 'unsafe-inline' allowed, no external stylesheets). Remove CSP tag entirely is cleanest fix."
+  ],
+  "critical_code_review_comments": [
+    "inscricao.html contains a legacy '<meta http-equiv=content-security-policy>' left over from a SingleFile.js webpage capture — this is a page-scoped CSP that is stricter than the site's HTTP-header CSP and blocks JS fetch to same-origin /api endpoints. Any dynamic feature added to this page (fetch, XHR, WebSocket) will silently fail until this meta tag is removed.",
+    "The static HTML file is huge (~4MB) because it contains base64-embedded images, fonts, and Jivosite widget code from the SingleFile capture. Consider stripping unused SingleFile-injected assets in a future cleanup."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "87.5% (7/8 scenarios pass; feature 6 CEP autofill fails)"},
+  "seed_data_creation": "None",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Feature 6 (CEP autofill) requires re-testing after E1 removes/fixes the CSP meta tag in /app/frontend/public/inscricao.html. Use CPF '52998224725' and CEP '01310100' — page currently loads and interacts fine but fetch is blocked. Feature 7 (invalid CEP fallback) currently appears to pass but only because fetch is blocked entirely; must retest after CSP fix to confirm real 404 path works.",
+  "rca of the issue": {
+    "bug": "CEP autofill does not populate Endereço/Bairro/Estado/Cidade/Complemento fields when a valid CEP is entered.",
+    "root_cause": "The static inscricao.html (originally saved with SingleFile.js from consulpam.com.br) contains a '<meta http-equiv=content-security-policy content=\"default-src none; font-src self data:; img-src self data:; style-src unsafe-inline; media-src self data:; script-src unsafe-inline data:; object-src self data:; frame-src self data:;\">' near the top. Because 'connect-src' is not specified, it inherits 'default-src none', blocking all fetch/XHR — including the same-origin fetch('/api/cep/'+cep) that powers autofill. Backend /api/cep/{cep} works correctly (verified via curl 200 for 01310100 and 404 for 99999999).",
+    "reproduction": "1) Open https://civico-portal.preview.emergentagent.com/inscricao. 2) In CEP field, type '01310100'. 3) Blur the field (Tab or click elsewhere). 4) Wait 2s. Expected: Endereço='Avenida Paulista', Bairro='Bela Vista', Estado='São Paulo', Complemento='de 612 a 1510 - lado par'. Actual: all fields remain empty. 5) Browser DevTools console shows 'Refused to connect ... violates CSP directive default-src none'.",
+    "mitigation": "Edit /app/frontend/public/inscricao.html and delete the offending '<meta http-equiv=content-security-policy ...>' tag (search for 'default-src' in the file — it appears once as a real meta and twice as HTML-encoded copies inside comments). Alternatively, replace the content with a more permissive policy that includes 'connect-src self https://viacep.com.br https://servicodados.ibge.gov.br'. Since the page is served over HTTPS from a preview.emergentagent.com origin with same-origin API, the simplest fix is to remove the tag entirely."
+  }
+}

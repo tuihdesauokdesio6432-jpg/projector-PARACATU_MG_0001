@@ -1,0 +1,33 @@
+{
+  "summary": "Mobile 390x844 responsive re-audit of 5 public pages (/, /inscricao.html, /confirmar-dados.html, /pagamento.html, /comprovante.html). All 4 issues from iteration 31 are RESOLVED.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verification_results": {
+    "horizontal_scroll_check (scrollWidth - innerWidth)": {
+      "/": 0,
+      "/inscricao.html": 0,
+      "/confirmar-dados.html": 0,
+      "/pagamento.html": 0,
+      "/comprovante.html": 0
+    },
+    "menu_font_size": "All 5 nav items (INÍCIO/CONCURSO/INSCRIÇÃO/EDITAL/CRONOGRAMA) render at 13px on all 5 pages (meets >=13px threshold, up from 12px).",
+    "home_nav_CRONOGRAMA": "Fully visible at 390px viewport; body has no horizontal scroll.",
+    "confirmar_dados_intro_text": "p0 correctly says 'gerar o pagamento via PIX' (no 'boleto ser impresso'). p1 correctly says 'gerado um PIX (QR Code + Copia e Cola)' (no 'boleto bancário'). Radio label 'Concordo com todos os dados da inscrição.' visible.",
+    "boleto_leakage": "hasBoleto=false on ALL 5 pages.",
+    "pagamento_page": "PIX box, QR code, Copia-e-Cola string, and VALOR R$ 125,00 (from sessionStorage.inscricaoDados.valor) render correctly at 390px.",
+    "comprovante_page": "CETREDE branding present, no Consulpam. Receipt fits width."
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"frontend": "100%"},
+  "seed_data_creation": "sessionStorage.inscricaoDados seeded per-page during test.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Iteration 31 fixes verified. Mobile 390x844 audit is clean across all 5 public pages. Note: /pagamento.html does not reach 'networkidle' (likely due to keep-alive/async QR); use wait_until='domcontentloaded' + wait_for_timeout for future testing."
+}

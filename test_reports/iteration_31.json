@@ -1,0 +1,48 @@
+{
+  "summary": "Mobile responsive audit (390x844) of all public pages: index.html, inscricao.html, confirmar-dados.html, pagamento.html, comprovante.html. Home page renders cleanly with hero, cards, info sections. Pagamento displays correct R$125 from sessionStorage.inscricaoDados. Comprovante shows CETREDE branding without Consulpam. Confirmar radio text 'Concordo com todos os dados da inscrição.' is present and enables Confirmar button. Main issues: (1) /inscricao.html has HORIZONTAL SCROLL on mobile — the CETREDE header/footer logo img is 396px wide vs 390 viewport, causing 26px overflow. (2) Home menu item 'CRONOGRAMA' is cut off at right edge (right=420 > 390). (3) Small font (12px) on 44 elements in internal pages (menu items, table cells) — below 13px threshold. (4) confirmar-dados.html still contains 2 old 'boleto' references in the intro paragraphs (lines 118 and 120) — user asked to replace the old boleto flow text.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "inscricao.html", "issue": "Horizontal scrollbar on mobile 390px viewport — scrollWidth=416px. Caused by <img src='/assets/cetrede-logo.png'> in the shared CETREDE header/footer being 396px wide (parent table not fluid). Also occurs on confirmar-dados.html header/footer when using shared CETREDE wrapper.", "selector": "img[src*='cetrede-logo.png']", "priority": "HIGH"},
+      {"component": "index.html header nav", "issue": "Menu item 'CRONOGRAMA' extends to right=420px while viewport=390px, so the text is cut off at the right edge on mobile 390 (see screenshot). Nav needs to wrap, use smaller font, or reduce padding on mobile.", "selector": "nav a:contains('CRONOGRAMA')", "priority": "MEDIUM"},
+      {"component": "inscricao.html + shared CETREDE templates", "issue": "44 elements render at 12px font-size (menu links 'INÍCIO/CONCURSO/INSCRIÇÃO/EDITAL/CRONOGRAMA', tab labels 'Dados do Concurso/Inscrições/Área do Candidato', legacy table cells 'Cargo:', etc.). Base font must be >= 13px per spec.", "selector": ".menu li a, .abas a, td.style4", "priority": "MEDIUM"},
+      {"component": "confirmar-dados.html", "issue": "Old boleto flow text still present in the intro paragraphs (line 118: 'favor confirmar a inscrição logo abaixo para o boleto ser impresso'; line 120: 'após esta etapa será gerado um boleto bancário para pagamento'). User replaced only the radio label but the surrounding copy still describes the boleto flow. Also the confirm button still has id='boleto' (cosmetic but reveals legacy).", "selector": "p (lines 118 & 120), #boleto", "priority": "MEDIUM"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Home hero badge", "issues": ["'CONCURSO PÚBLICO — ABERTO' badge uses 12px font (below 13px threshold)"]},
+      {"screen": "Internal pages (inscricao/confirmar/pagamento/comprovante)", "issues": ["Legacy Cetrede header/footer table layout is not fluid on mobile; causes 26px horizontal overflow; menu wraps to 2 lines but still 12px"]}
+    ]
+  },
+  "positive_findings": [
+    "Home page: no horizontal scroll, hero + 3 info cards + FAZER INSCRIÇÃO button all render correctly",
+    "FAZER INSCRIÇÃO button navigates to /inscricao.html successfully",
+    "Cargo dropdown has 79 options in 3 optgroups (as expected)",
+    "'Local de Prova' radio: only Forquilha option, pre-checked (name=loc_pro value=3)",
+    "confirmar-dados.html: radio text 'Concordo com todos os dados da inscrição.' present; Confirmar button correctly enables when radio checked",
+    "pagamento.html: 'Valor da Inscrição' shows R$ 125,00 from sessionStorage.inscricaoDados.valor (NOT hardcoded R$179). PIX QR + Copia e Cola code visible",
+    "comprovante.html: NO 'Instituto Consulpam' text; header 'Fundação CETREDE' + 'Comprovante de Inscrição' + concurso 'PREFEITURA MUNICIPAL DE FORQUILHA-CE' shown correctly",
+    "No horizontal scroll on pagamento.html and comprovante.html when accessed with valid sessionStorage"
+  ],
+  "test_report_links": [],
+  "action_items": [
+    "Make the CETREDE header/footer <img> fluid on mobile (max-width:100%;height:auto or wrap in width:100% container) to eliminate horizontal scroll on /inscricao.html (and any other page that uses the shared header)",
+    "Fix home page nav: wrap CRONOGRAMA to a new line OR reduce nav font/padding at 390px so no item overflows viewport",
+    "Bump base font-size on menu links, tabs, and legacy table cells from 12px to >=13px on mobile",
+    "Update confirmar-dados.html intro paragraphs (lines 118 & 120) to remove references to 'boleto' — should describe the PIX flow (or just say 'prosseguir para o pagamento')",
+    "Optionally rename the id='boleto' on the confirm button to id='confirma' for consistency"
+  ],
+  "critical_code_review_comments": [
+    "sessionStorage key mismatch in the review request vs code: code uses 'inscricaoDados' but the review request example uses 'ins_data'. Tests must seed 'inscricaoDados' — worth documenting in README so future testers don't get redirected to /inscricao.",
+    "inscricao.html is 1145 lines — large single file mixing legacy table layout, inline styles, and modern responsive fixes; should be split/refactored.",
+    "Legacy table-based layout in the shared CETREDE header/footer is the root cause of most mobile overflow issues; a proper flexbox/CSS grid layout would resolve them holistically."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "80%"},
+  "test_credentials": "N/A",
+  "seed_data_creation": "Used sessionStorage.setItem('inscricaoDados', JSON) to seed nome/cpf/cargo/valor=125/protocolo for confirmar, pagamento, comprovante pages",
+  "retest_needed": true,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "IMPORTANT: pagamento/confirmar/comprovante pages read sessionStorage key 'inscricaoDados' (NOT 'ins_data'). If not seeded, pages redirect to /inscricao which then shows overflow on mobile. When mobile-testing internal pages directly, always seed sessionStorage with 'inscricaoDados' first. Home page and inscricao.html can be tested without any seed. Preview URL: https://civico-portal.preview.emergentagent.com. Mobile viewport 390x844.",
+  "rca of the issue": "Horizontal scroll on inscricao.html mobile: the shared CETREDE header/footer contains <img src='/assets/cetrede-logo.png' width=~220 or with fixed dimensions inside a fixed-width table>. On 390px viewport the img+padding renders at 396px, pushing scrollWidth to 416px. Reproduction: open /inscricao.html at 390px width — page has a horizontal scrollbar; querying document.querySelectorAll('*') for elements with getBoundingClientRect().right > 390 returns the IMG. Mitigation: add CSS `img{max-width:100%;height:auto}` scoped to the header/footer, and ensure the wrapper table uses width:100% with table-layout:fixed on mobile."
+}

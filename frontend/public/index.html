@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index,follow">
+<title>Concurso Público — Prefeitura de Forquilha-CE | Fundação CETREDE</title>
+<style>
+:root{
+  --azure:#00AFEF;
+  --navy:#000625;
+  --navy-2:#010C4E;
+  --ink:#1f2740;
+  --muted:#5b6478;
+  --line:#e5e9f2;
+  --bg:#f6f8fb;
+  --white:#fff;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;color:var(--ink);background:var(--bg);font-size:15px;line-height:1.55}
+img{max-width:100%;display:block}
+a{color:var(--azure);text-decoration:none}
+
+/* Header */
+#cetrede-header{background:var(--white);padding:0;border-bottom:3px solid var(--azure);}
+#cetrede-header .top{max-width:1200px;margin:0 auto;padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+#cetrede-header .top img{height:58px;width:auto;}
+#cetrede-header .btn-top{display:inline-block;background:var(--azure);color:#fff;font-weight:700;font-size:13px;letter-spacing:.5px;text-transform:uppercase;padding:12px 22px;border-radius:6px;}
+#cetrede-header nav{background:var(--navy);}
+#cetrede-header nav ul{max-width:1200px;margin:0 auto;padding:12px 20px;list-style:none;display:flex;gap:22px;flex-wrap:wrap;}
+#cetrede-header nav a{color:#fff;font-weight:700;font-size:14px;text-transform:uppercase;letter-spacing:.4px;padding:6px 0;display:inline-block;}
+#cetrede-header nav a:hover{color:var(--azure);}
+
+/* Hero / Contest info */
+.hero{background:linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 100%);color:#fff;padding:56px 20px 72px;}
+.hero .wrap{max-width:1100px;margin:0 auto;}
+.hero .eyebrow{display:inline-block;background:rgba(0,175,239,.15);color:var(--azure);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;padding:6px 12px;border-radius:999px;margin-bottom:16px;border:1px solid rgba(0,175,239,.35);}
+.hero h1{font-size:38px;line-height:1.15;margin:0 0 10px;color:#fff;font-weight:700;letter-spacing:-.5px;}
+.hero .subtitle{font-size:17px;color:#c9d6f5;margin:0 0 28px;max-width:800px;}
+
+/* Info cards */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:0 0 32px;}
+.info-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:18px 20px;}
+.info-card .label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--azure);font-weight:700;margin-bottom:6px;}
+.info-card .value{font-size:16px;color:#fff;font-weight:600;}
+.info-card .value strong{font-size:20px;display:block;}
+
+/* CTA button */
+.cta-row{display:flex;gap:14px;flex-wrap:wrap;align-items:center;}
+.btn-primary{display:inline-block;background:var(--azure);color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:15px;padding:16px 34px;border-radius:8px;box-shadow:0 4px 14px rgba(0,175,239,.35);transition:transform .15s ease, background-color .15s ease, box-shadow .15s ease;}
+.btn-primary:hover{background:#0092c8;transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,175,239,.45);}
+.btn-secondary{display:inline-block;background:transparent;color:#fff;font-weight:700;text-transform:uppercase;letter-spacing:.6px;font-size:14px;padding:15px 26px;border-radius:8px;border:1.5px solid rgba(255,255,255,.35);transition:background-color .15s ease, border-color .15s ease;}
+.btn-secondary:hover{background:rgba(255,255,255,.08);border-color:var(--azure);}
+
+/* Section: Detalhes */
+.details{max-width:1100px;margin:-32px auto 0;padding:0 20px 60px;position:relative;z-index:2;}
+.details .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:34px 34px;box-shadow:0 10px 30px rgba(10,20,50,.06);}
+.details h2{margin:0 0 16px;color:var(--navy);font-size:22px;font-weight:700;}
+.details .row{display:grid;grid-template-columns:180px 1fr;gap:12px 22px;padding:14px 0;border-top:1px solid var(--line);align-items:baseline;}
+.details .row:first-of-type{border-top:0;padding-top:0;}
+.details .row .k{color:var(--muted);font-size:13px;text-transform:uppercase;letter-spacing:.6px;font-weight:600;}
+.details .row .v{color:var(--ink);font-size:15px;}
+.details .row .v strong{color:var(--navy);}
+.details .doc-links{margin-top:20px;display:flex;gap:14px;flex-wrap:wrap;}
+.details .doc-links a{display:inline-flex;align-items:center;gap:8px;padding:10px 16px;border:1px solid var(--azure);color:var(--azure);border-radius:8px;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.4px;transition:background-color .15s ease;}
+.details .doc-links a:hover{background:rgba(0,175,239,.08);}
+
+/* Footer */
+#cetrede-footer{background:var(--navy);color:#e6f4ff;padding:40px 20px 24px;margin-top:0;}
+#cetrede-footer .cols{max-width:1200px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between;}
+#cetrede-footer .col{flex:1 1 260px;min-width:220px;}
+#cetrede-footer img.logo{height:60px;width:auto;background:#fff;padding:8px 12px;border-radius:6px;}
+#cetrede-footer p{margin:0 0 6px;font-size:13px;line-height:1.6;color:#c9d6f5;}
+#cetrede-footer h3{color:#fff;font-size:15px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.5px;}
+#cetrede-footer .copy{max-width:1200px;margin:22px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:#8fa8d6;text-align:center;}
+
+@media (max-width:768px){
+  .hero{padding:40px 18px 60px;}
+  .hero h1{font-size:28px;}
+  .hero .wrap{display:flex;flex-direction:column;}
+  .hero .eyebrow{order:1;}
+  .hero h1{order:2;}
+  .hero .subtitle{order:3;}
+  .hero .cta-row{order:4;margin-bottom:26px;}
+  .hero .info-grid{order:5;margin-bottom:0;}
+  .hero .btn-primary{font-size:13px;padding:12px 22px;letter-spacing:.4px;}
+  .details{margin-top:-24px;padding:0 16px 44px;}
+  .details .card{padding:24px 20px;}
+  .details .row{grid-template-columns:1fr;gap:2px;padding:12px 0;}
+  #cetrede-header .top{padding:14px 16px;}
+  #cetrede-header .top img{height:46px;}
+  #cetrede-header nav ul{gap:14px;padding:10px 16px;overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;}
+  #cetrede-header nav a{font-size:13px;white-space:nowrap;}
+  #cetrede-header .btn-top{font-size:12px;padding:10px 16px;}
+}
+@media (max-width:420px){
+  #cetrede-header .top{padding:12px 14px;gap:10px;}
+  #cetrede-header .top img{height:40px;}
+  #cetrede-header .btn-top{font-size:11px;padding:9px 12px;letter-spacing:.3px;}
+  #cetrede-header nav ul{padding:8px 14px;gap:12px;}
+  #cetrede-header nav a{font-size:13px;letter-spacing:.2px;}
+  .hero h1{font-size:24px;}
+  .hero .subtitle{font-size:14px;}
+  .hero .btn-primary{font-size:12px;padding:11px 18px;letter-spacing:.3px;}
+  .info-card .value strong{font-size:17px;}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="cetrede-header">
+  <div class="top">
+    <a href="/" aria-label="Fundação Cetrede">
+      <img src="/assets/cetrede-logo.png" alt="Fundação Cetrede">
+    </a>
+    <a href="/" class="btn-top" data-testid="btn-selecoes-concursos">Seleções e Concursos</a>
+  </div>
+  <nav>
+    <ul>
+      <li><a href="/" data-testid="link-inicio">Início</a></li>
+      <li><a href="#detalhes" data-testid="link-concurso">Concurso</a></li>
+      <li><a href="/inscricao.html" data-testid="link-inscricao">Inscrição</a></li>
+    </ul>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="eyebrow">Concurso Público — Aberto</span>
+    <h1>Prefeitura Municipal de Forquilha (CE)</h1>
+    <p class="subtitle">Concurso Público Nº 001/2026 para provimento de vagas em cargos de nível fundamental, médio e superior. Inscrições abertas, com organização e execução da <strong style="color:#fff">Fundação CETREDE</strong>.</p>
+
+    <div class="info-grid">
+      <div class="info-card">
+        <div class="label">Edital</div>
+        <div class="value"><strong>Nº 001/2026</strong>Publicado em 25/06/2026</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Período de Inscrição</div>
+        <div class="value"><strong>29/06 a 17/08/2026</strong>até às 23:59 (horário de Brasília)</div>
+      </div>
+      <div class="info-card">
+        <div class="label">Organizadora</div>
+        <div class="value"><strong>Fundação CETREDE</strong>Vinculada à UFC — Fortaleza/CE</div>
+      </div>
+    </div>
+
+    <div class="cta-row">
+      <a href="/inscricao.html" class="btn-primary" data-testid="fazer-inscricao-btn">Fazer Inscrição</a>
+    </div>
+  </div>
+</section>
+
+<!-- DETALHES -->
+<section class="details" id="detalhes">
+  <div class="card">
+    <h2>Informações do Concurso</h2>
+
+    <div class="row">
+      <div class="k">Órgão Realizador</div>
+      <div class="v"><strong>Prefeitura Municipal de Forquilha</strong> — Estado do Ceará</div>
+    </div>
+    <div class="row">
+      <div class="k">Banca Organizadora</div>
+      <div class="v"><strong>Fundação CETREDE</strong> — Fundação de Apoio à Cultura, à Pesquisa e ao Desenvolvimento Institucional, Científico e Tecnológico (vinculada à UFC)</div>
+    </div>
+    <div class="row">
+      <div class="k">Edital</div>
+      <div class="v">Edital Nº 001/2026, publicado em <strong>25 de junho de 2026</strong></div>
+    </div>
+    <div class="row">
+      <div class="k">Inscrições</div>
+      <div class="v">De <strong>29 de junho de 2026</strong> a <strong>17 de agosto de 2026</strong></div>
+    </div>
+    <div class="row">
+      <div class="k">Vagas</div>
+      <div class="v"><strong>78 cargos</strong> disponíveis nos níveis fundamental, médio e superior — turnos manhã e tarde</div>
+    </div>
+    <div class="row">
+      <div class="k">Taxa de Inscrição</div>
+      <div class="v">
+        Nível Fundamental — <strong>R$ 80,00</strong> &nbsp;·&nbsp;
+        Nível Médio — <strong>R$ 100,00</strong> &nbsp;·&nbsp;
+        Nível Superior — <strong>R$ 125,00</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="cetrede-footer">
+  <div class="cols">
+    <div class="col">
+      <img class="logo" src="/assets/cetrede-logo.png" alt="Fundação Cetrede">
+      <p style="margin-top:14px;">Fundação de Apoio à Cultura, à Pesquisa e ao Desenvolvimento Institucional, Científico e Tecnológico.</p>
+    </div>
+    <div class="col">
+      <h3>Concurso Público</h3>
+      <p>Prefeitura Municipal de Forquilha (CE)</p>
+      <p>Edital Nº 001/2026 — 25 de Junho de 2026</p>
+      <p>Inscrições: 29/06 a 17/08/2026</p>
+      <p>Organizadora: Fundação CETREDE</p>
+    </div>
+    <div class="col">
+      <h3>Contato</h3>
+      <p>Av. da Universidade, 2932 — Benfica</p>
+      <p>Fortaleza — CE</p>
+      <p>CNPJ: 07.343.184/0001-06</p>
+      <p>Atendimento: seg. a sex., 8h às 17h</p>
+    </div>
+  </div>
+  <div class="copy">© 2026 Fundação CETREDE — Todos os direitos reservados.</div>
+</div>
+
+<script>
+// Track landing page access - fires once per visit (backend deduplicates by IP+device/30min)
+(function(){
+  try {
+    var api = (window.__API_BASE__ || '') + '/api/track/access';
+    fetch(api, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        page: window.location.pathname || '/',
+        user_agent: navigator.userAgent,
+        extra: { referrer: document.referrer || '', lang: navigator.language || '' }
+      }),
+      credentials: 'same-origin',
+      keepalive: true
+    }).catch(function(){});
+  } catch(e){}
+})();
+</script>
+</body>
+</html>

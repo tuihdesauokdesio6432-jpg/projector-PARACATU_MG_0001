@@ -1,0 +1,30 @@
+{
+  "summary": "Verified the removal of 'Fortaleza' option from Local de Prova radio group on /inscricao.html. Only 'Forquilha' (value=3) radio remains and is pre-checked by default. Form structure and validation logic are intact. Submitted flow was not fully completed end-to-end because unrelated file-upload fields (ins_doc_frente/verso) are required by validator, but this is unrelated to the loc_pro change. Confirmation page renders 'Forquilha' correctly.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "verified_requirements": [
+    "DOM contains exactly 1 input[name='loc_pro'] with value='3' (verified: count=1)",
+    "Forquilha radio is pre-checked by default (verified: checked=true on page load)",
+    "'Fortaleza' text does NOT appear in the loc_pro row (verified via outerHTML check)",
+    "window.__collectFormData() returns localProva: '3' when Forquilha is selected",
+    "confirmar-dados.html renders 'Local de Prova?*  Forquilha' when ins_data.localProva='3'",
+    "LABELS map at line 917 still contains loc_pro:'Local de Prova' — validation still references the field correctly",
+    "Rest of the form (cargo dropdown with '049 - Arquiteto — R$ 125,00 (Manhã)' data-valor=125.00, personal/contact/specific data fields) renders and accepts input"
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "inscricao.html is 1146 lines — consider splitting inline JS validation into a separate module for maintainability (not blocking).",
+    "Note: form still requires ins_doc_frente/verso file uploads when tipo_documento is selected — this correctly blocks the flow when no docs are uploaded and is unrelated to the loc_pro change."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A (skipped)", "frontend": "100%"},
+  "seed_data_creation": "None",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "Only 'Forquilha' loc_pro radio remains and is pre-checked. Confirmar-dados.html correctly reads sessionStorage.ins_data.localProva='3' and displays 'Forquilha'. Submission end-to-end requires document file uploads (ins_doc_frente/verso) — for future E2E tests, upload dummy files before clicking Inscrever."
+}

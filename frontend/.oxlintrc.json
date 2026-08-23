@@ -1,0 +1,15 @@
+{
+  "ignorePatterns": [
+    "build/**",
+    "public/donainel/**",
+    "public/donaspainel/**",
+    "node_modules/**"
+  ],
+  "globals": {
+    "WorkerGlobalScope": "readonly",
+    "__REACT_DEVTOOLS_GLOBAL_HOOK__": "readonly"
+  },
+  "rules": {
+    "no-undef": "off"
+  }
+}
