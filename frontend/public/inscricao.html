@@ -262,6 +262,42 @@
 </div>
 </td>
 </tr>
+<tr>
+<td colspan="4" style="padding-top:12px;">
+  <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:#333;font-size:14px;font-weight:600;">
+    <input type="checkbox" id="chk-insc2"> Desejo fazer uma 2ª inscrição (opcional)
+  </label>
+</td>
+</tr>
+<tr id="insc2-wrap" style="display:none;">
+<td colspan="4">
+  <fieldset style="border:1px solid #e5e2dc;border-radius:10px;padding:6px 16px 16px;margin-top:6px;">
+    <legend style="font-weight:700;color:#333;font-size:14px;padding:0 6px;">2ª Inscrição</legend>
+    <div style="font-weight:600;color:#333;font-size:13px;margin:8px 0 5px;">Núcleo Regional de Educação: <span style="color:#c00">*</span></div>
+    <select id="nre2" name="nre2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+      <option selected="" value="">Selecione</option>
+    </select>
+    <div style="font-weight:600;color:#333;font-size:13px;margin:12px 0 5px;">Municípios: <span style="color:#c00">*</span></div>
+    <div id="munic-empty2" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
+    <div id="munic-grid2" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
+    <div id="munic-help2" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 4px;">
+      <div style="flex:1 1 320px;min-width:260px;">
+        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
+        <select id="prova2" name="prova2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+          <option selected="" value="">Selecione</option>
+        </select>
+      </div>
+      <div style="flex:1 1 320px;min-width:260px;">
+        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função</div>
+        <select id="funcao2" name="funcao2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
+          <option selected="" value="">Todas as funções</option>
+        </select>
+      </div>
+    </div>
+  </fieldset>
+</td>
+</tr>
 
 <tr>
 <td bgcolor="#FFFFFF" colspan="4" id="prop"> </td>
@@ -1008,7 +1044,12 @@ de 18 anos:</span></td>
       leiPreto: textOfSelect('ins_neg'),
       guardaSabados: radioChecked('ins_sab'),
       aceitaWhatsapp: radioChecked('msg_wha'),
-      localProva: textOfSelect('cidadeProva')
+      localProva: textOfSelect('cidadeProva'),
+      segundaInscricao: (getEl('chk-insc2') && getEl('chk-insc2').checked) ? 'Sim' : 'Não',
+      nre2: textOfSelect('nre2'),
+      municipios2: (window.__municSel2||[]).join(', '),
+      prova2: textOfSelect('prova2'),
+      funcao2: textOfSelect('funcao2')
     };
   };
 
@@ -1399,6 +1440,110 @@ window.CIDADES_PROVA = [
         o.value = c; o.textContent = c;
         sel.appendChild(o);
       });
+  });
+})();
+</script>
+
+
+<script>
+/* 2ª inscrição: NRE + Municípios + Prova + Função (opcional) */
+(function(){
+  function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var chk = document.getElementById("chk-insc2");
+    var wrap = document.getElementById("insc2-wrap");
+    var nre2 = document.getElementById("nre2");
+    var prova2 = document.getElementById("prova2");
+    var funcao2 = document.getElementById("funcao2");
+    var grid2 = document.getElementById("munic-grid2");
+    var empty2 = document.getElementById("munic-empty2");
+    var help2 = document.getElementById("munic-help2");
+    if(!chk || !wrap) return;
+
+    // toggle visibilidade
+    chk.addEventListener("change", function(){
+      wrap.style.display = chk.checked ? "table-row" : "none";
+    });
+
+    // clonar opções do NRE principal
+    var nre = document.getElementById("nre");
+    if(nre && nre2){
+      Array.prototype.forEach.call(nre.options, function(o){
+        if(o.value === "") return;
+        var n = document.createElement("option");
+        n.value = o.value; n.textContent = o.textContent;
+        nre2.appendChild(n);
+      });
+    }
+
+    // Prova2 (com grupos) + Função2
+    if(prova2){
+      var GRUPOS = [{label:"ÁREA BÁSICA", prof:false},{label:"EDUCAÇÃO PROFISSIONAL", prof:true}];
+      var todas = Object.keys(window.PROVA_FUNCOES || {});
+      var profSet = window.PROVAS_PROFISSIONAL || [];
+      GRUPOS.forEach(function(g){
+        var provas = todas.filter(function(p){ return (profSet.indexOf(p) >= 0) === g.prof; })
+          .sort(function(a,b){ return a.localeCompare(b,"pt-BR"); });
+        if(!provas.length) return;
+        var og = document.createElement("optgroup"); og.label = g.label;
+        provas.forEach(function(p){ var o=document.createElement("option"); o.value=p; o.textContent=p; og.appendChild(o); });
+        prova2.appendChild(og);
+      });
+      function fillFuncoes2(){
+        funcao2.innerHTML = "";
+        var t = document.createElement("option"); t.value=""; t.textContent="Todas as funções"; funcao2.appendChild(t);
+        var list = (window.PROVA_FUNCOES || {})[prova2.value] || [];
+        list.forEach(function(f){ var o=document.createElement("option"); o.value=f; o.textContent=f; funcao2.appendChild(o); });
+        funcao2.value = "";
+      }
+      prova2.addEventListener("change", fillFuncoes2);
+      fillFuncoes2();
+    }
+
+    // Municípios2 (máx 2)
+    window.__municSel2 = [];
+    var MAX = 2;
+    function card2(name){
+      var id = "mun2-" + name.replace(/[^a-z0-9]+/gi,"-");
+      var wrapL = document.createElement("label");
+      wrapL.setAttribute("for", id);
+      wrapL.style.cssText = "display:flex;align-items:flex-start;gap:10px;border:1px solid #e5e2dc;border-radius:10px;padding:12px 14px;background:#fff;cursor:pointer;";
+      var cb = document.createElement("input");
+      cb.type="checkbox"; cb.id=id; cb.value=name; cb.className="munic-cb2"; cb.style.cssText="margin-top:3px;flex:0 0 auto;";
+      var txt = document.createElement("div");
+      txt.innerHTML='<div style="font-weight:700;color:#1f2740;font-size:13px;">'+name+'</div><div style="color:#8a7a66;font-size:12px;">Município disponível</div>';
+      wrapL.appendChild(cb); wrapL.appendChild(txt);
+      cb.addEventListener("change", onToggle2);
+      return wrapL;
+    }
+    function onToggle2(){
+      var checked = Array.prototype.slice.call(grid2.querySelectorAll(".munic-cb2:checked"));
+      if(checked.length > MAX){
+        this.checked = false;
+        alert("Selecione no máximo dois municípios.");
+        checked = Array.prototype.slice.call(grid2.querySelectorAll(".munic-cb2:checked"));
+      }
+      window.__municSel2 = checked.map(function(c){ return c.value; });
+      var all = grid2.querySelectorAll(".munic-cb2");
+      var lock = window.__municSel2.length >= MAX;
+      Array.prototype.forEach.call(all, function(c){
+        c.disabled = lock && !c.checked;
+        c.closest("label").style.opacity = (c.disabled ? "0.5" : "1");
+      });
+    }
+    function render2(){
+      var list = (window.NRE_MUNICIPIOS || {})[nre2.value] || null;
+      window.__municSel2 = [];
+      grid2.innerHTML = "";
+      if(!nre2.value || !list){
+        grid2.style.display="none"; help2.style.display="none"; empty2.style.display="block";
+        empty2.textContent = !nre2.value ? "Selecione primeiro o Núcleo Regional de Educação." : "Nenhum município cadastrado para este NRE ainda.";
+        return;
+      }
+      list.forEach(function(m){ grid2.appendChild(card2(m)); });
+      empty2.style.display="none"; grid2.style.display="grid"; help2.style.display="block";
+    }
+    if(nre2){ nre2.addEventListener("change", render2); render2(); }
   });
 })();
 </script>
