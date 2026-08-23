@@ -415,6 +415,10 @@
 <option value="PASSAPORTE">Passaporte</option>
 </select></td>
 </tr>
+<tr id="tr-doc-hint" style="display:none">
+<td bgcolor="#F9F9F9" height="25"></td>
+<td colspan="3" height="25"><div style="font-size:11px;color:#8a5a00;line-height:1.45;max-width:620px;"><strong>Atenção:</strong> anexe abaixo o seu documento de identificação (frente e verso). O envio é <strong>obrigatório</strong> para a validação do cadastro e a confirmação da inscrição neste seletivo.</div></td>
+</tr>
 <tr id="tr-doc-frente" style="display:none">
 <td bgcolor="#F9F9F9" height="25"><span class="style4">Documento (frente)*:</span></td>
 <td colspan="3" height="25"><input accept="image/*,.pdf" class="input" data-testid="input-doc-frente" id="ins_doc_frente" name="ins_doc_frente" type="file"/></td>
@@ -1144,6 +1148,7 @@ input[type=email] { text-transform: uppercase; }
       var show = v && v !== '';
       trFrente.style.display = show ? '' : 'none';
       trVerso.style.display = show ? '' : 'none';
+      var trHint = document.getElementById('tr-doc-hint'); if(trHint){ trHint.style.display = show ? '' : 'none'; }
       if (!show){
         if (inpFrente) inpFrente.value = '';
         if (inpVerso) inpVerso.value = '';
