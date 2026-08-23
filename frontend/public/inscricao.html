@@ -1314,8 +1314,13 @@ window.PROVA_FUNCOES = {
   "Matemática": ["Ciências Exatas","Ciências da Natureza I","Matemática","Matemática e suas Tecnologias"],
   "Pedagogia": ["Professor Pedagogo","Professor Pedagogo - Ed. do Campo"],
   "Química": ["Química"],
-  "Sociologia": ["Sociologia"]
+  "Sociologia": ["Sociologia"],
+  "Ambiente e Saúde": ["AS - Cuidados de Idosos","AS - Enfermagem","AS - Estética","AS - Farmácia","AS - Meio Ambiente"],
+  "Controle e Processos Industriais": ["CI - Eletromecânica","CI - Eletrotécnica","CI - Eletrônica","CI - Mecânica"],
+  "Formação de Docentes": ["Formação de Docentes"]
 };
+
+window.PROVAS_PROFISSIONAL = ["Ambiente e Saúde","Controle e Processos Industriais","Formação de Docentes"];
 
 (function(){
   function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
@@ -1325,11 +1330,23 @@ window.PROVA_FUNCOES = {
     if(!prova || !funcao) return;
 
     // popular a lista de provas
-    var provas = Object.keys(window.PROVA_FUNCOES || {}).sort(function(a,b){return a.localeCompare(b,"pt-BR");});
-    provas.forEach(function(p){
-      var o = document.createElement("option");
-      o.value = p; o.textContent = p;
-      prova.appendChild(o);
+    var GRUPOS = [
+      {label:"ÁREA BÁSICA", prof:false},
+      {label:"EDUCAÇÃO PROFISSIONAL", prof:true}
+    ];
+    var todas = Object.keys(window.PROVA_FUNCOES || {});
+    var profSet = window.PROVAS_PROFISSIONAL || [];
+    GRUPOS.forEach(function(g){
+      var provas = todas.filter(function(p){ return (profSet.indexOf(p) >= 0) === g.prof; })
+        .sort(function(a,b){ return a.localeCompare(b,"pt-BR"); });
+      if(!provas.length) return;
+      var og = document.createElement("optgroup"); og.label = g.label;
+      provas.forEach(function(p){
+        var o = document.createElement("option");
+        o.value = p; o.textContent = p;
+        og.appendChild(o);
+      });
+      prova.appendChild(og);
     });
 
     function fillFuncoes(){
