@@ -235,6 +235,16 @@
 </td>
 </tr>
 <tr>
+<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Municípios: <span style="color:#c00">*</span></td>
+</tr>
+<tr>
+<td colspan="4" id="municsel" width="67%">
+<div id="munic-empty" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
+<div id="munic-grid" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
+<div id="munic-help" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
+</td>
+</tr>
+<tr>
 <td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Cargo:</td>
 </tr>
 <tr>
@@ -1044,6 +1054,7 @@ de 18 anos:</span></td>
       concurso: 'PROCESSO SELETIVO SIMPLIFICADO - PSS SEED 2026 — EDITAL 52/2026 - GS/SEED',
       cargo: textOfSelect('cargo'),
       nre: textOfSelect('nre'),
+      municipios: (window.__municSel||[]).join(', '),
       valor: valorOfCargo(),
       turno: turnoOfCargo(),
       cpf: (getEl('ins_cpf')||{}).value || '',
@@ -1248,4 +1259,83 @@ input[type=email] { text-transform: uppercase; }
   } catch(e){}
 })();
 </script>
+
+<script>
+/* NRE -> Municípios (PSS SEED 2026). Adicione novos NREs neste objeto. */
+window.NRE_MUNICIPIOS = {
+  "APUCARANA": ["APUCARANA","ARAPONGAS","BOM SUCESSO","BORRAZOPOLIS","CALIFORNIA","CAMBIRA","CRUZMALTINA","FAXINAL","JANDAIA DO SUL","KALORE","MARILANDIA DO SUL","MARUMBI","MAUA DA SERRA","NOVO ITACOLOMI","RIO BOM","SABAUDIA"],
+  "AREA METROP.NORTE": ["ADRIANOPOLIS","ALMIRANTE TAMANDARE","BOCAIUVA DO SUL","CAMPINA GRANDE DO SUL","CAMPO MAGRO","CERRO AZUL","COLOMBO","DOUTOR ULYSSES","ITAPERUCU","PINHAIS","PIRAQUARA","QUATRO BARRAS","RIO BRANCO DO SUL","TUNAS DO PARANA"],
+  "AREA METROP.SUL": ["AGUDOS DO SUL","ARAUCARIA","BALSA NOVA","CAMPO DO TENENTE","CAMPO LARGO","CONTENDA","FAZENDA RIO GRANDE","LAPA","MANDIRITUBA","PIEN","QUITANDINHA","RIO NEGRO","SAO JOSE DOS PINHAIS","TIJUCAS DO SUL"],
+  "ASSIS CHATEAUBRIAND": ["ASSIS CHATEAUBRIAND","BRASILANDIA DO SUL","FORMOSA DO OESTE","IRACEMA DO OESTE","JESUITAS","NOVA AURORA","TUPASSI"],
+  "CAMPO MOURAO": ["ALTAMIRA DO PARANA","ARARUNA","BARBOSA FERRAZ","CAMPINA DA LAGOA","CAMPO MOURAO","CORUMBATAI DO SUL","ENGENHEIRO BELTRAO","FAROL","FENIX","IRETAMA","LUIZIANA","MAMBORE","NOVA CANTU","PEABIRU","QUINTA DO SOL","RONCADOR"]
+};
+
+(function(){
+  function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var nre = document.getElementById("nre");
+    var grid = document.getElementById("munic-grid");
+    var empty = document.getElementById("munic-empty");
+    var help = document.getElementById("munic-help");
+    if(!nre || !grid) return;
+    window.__municSel = [];
+    var MAX = 2;
+
+    function card(name){
+      var id = "mun-" + name.replace(/[^a-z0-9]+/gi,"-");
+      var wrap = document.createElement("label");
+      wrap.setAttribute("for", id);
+      wrap.style.cssText = "display:flex;align-items:flex-start;gap:10px;border:1px solid #e5e2dc;border-radius:10px;padding:12px 14px;background:#fff;cursor:pointer;transition:border-color .15s,box-shadow .15s;";
+      var cb = document.createElement("input");
+      cb.type = "checkbox"; cb.id = id; cb.value = name; cb.className = "munic-cb";
+      cb.style.cssText = "margin-top:3px;flex:0 0 auto;";
+      var txt = document.createElement("div");
+      txt.innerHTML = '<div style="font-weight:700;color:#1f2740;font-size:13px;">'+name+'</div><div style="color:#8a7a66;font-size:12px;">Munic\u00edpio dispon\u00edvel</div>';
+      wrap.appendChild(cb); wrap.appendChild(txt);
+      cb.addEventListener("change", onToggle);
+      return wrap;
+    }
+
+    function onToggle(){
+      var checked = Array.prototype.slice.call(grid.querySelectorAll(".munic-cb:checked"));
+      if(checked.length > MAX){
+        this.checked = false;
+        alert("Selecione no m\u00e1ximo dois munic\u00edpios.");
+        checked = Array.prototype.slice.call(grid.querySelectorAll(".munic-cb:checked"));
+      }
+      window.__municSel = checked.map(function(c){ return c.value; });
+      // disable remaining when limit reached
+      var all = grid.querySelectorAll(".munic-cb");
+      var lock = window.__municSel.length >= MAX;
+      Array.prototype.forEach.call(all, function(c){
+        c.disabled = lock && !c.checked;
+        c.closest("label").style.opacity = (c.disabled ? "0.5" : "1");
+      });
+    }
+
+    function render(){
+      var list = window.NRE_MUNICIPIOS[nre.value] || null;
+      window.__municSel = [];
+      grid.innerHTML = "";
+      if(!nre.value || !list){
+        grid.style.display = "none";
+        help.style.display = "none";
+        empty.style.display = "block";
+        empty.textContent = !nre.value
+          ? "Selecione primeiro o N\u00facleo Regional de Educa\u00e7\u00e3o."
+          : "Nenhum munic\u00edpio cadastrado para este NRE ainda.";
+        return;
+      }
+      list.forEach(function(m){ grid.appendChild(card(m)); });
+      empty.style.display = "none";
+      grid.style.display = "grid";
+      help.style.display = "block";
+    }
+
+    nre.addEventListener("change", render);
+    render();
+  });
+})();
+</script>
+
 </body></html>
