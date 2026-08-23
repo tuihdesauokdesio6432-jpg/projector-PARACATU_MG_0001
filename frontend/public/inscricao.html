@@ -260,6 +260,12 @@
     </select>
   </div>
 </div>
+<div style="margin-top:14px;max-width:560px;">
+  <div style="color:#1b3a8f;font-weight:700;font-size:13px;margin-bottom:5px;">Cidade de Prova <span style="color:#c00">*</span></div>
+  <select id="cidadeProva" name="cidadeProva" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+    <option selected="" value="">-- Selecione a Cidade --</option>
+  </select>
+</div>
 </td>
 </tr>
 
@@ -983,6 +989,7 @@ de 18 anos:</span></td>
       municipios: (window.__municSel||[]).join(', '),
       prova: textOfSelect('prova'),
       funcao: textOfSelect('funcao'),
+      cidadeProva: textOfSelect('cidadeProva'),
       valor: valorOfCargo(),
       turno: turnoOfCargo(),
       cpf: (getEl('ins_cpf')||{}).value || '',
@@ -1371,6 +1378,30 @@ window.PROVAS_PROFISSIONAL = ["Ambiente e Saúde","Controle e Processos Industri
 
     prova.addEventListener("change", fillFuncoes);
     fillFuncoes();
+  });
+})();
+</script>
+
+
+<script>
+/* Cidades de Prova (PSS SEED 2026). Lista parcial - complete conforme envio. */
+window.CIDADES_PROVA = [
+  "APUCARANA","ASSIS CHATEAUBRIAND","CAMPO MOURÃO","CASCAVEL","CIANORTE",
+  "CORNÉLIO PROCÓPIO","CURITIBA","DOIS VIZINHOS","FOZ DO IGUAÇU","FRANCISCO BELTRÃO",
+  "GOIOERÊ","GUARAPUAVA","IBAITI","IRATI","IVAIPORÃ","JACAREZINHO",
+  "LARANJEIRAS DO SUL","LOANDA","LONDRINA","MARINGÁ","MATINHOS","PARANAVAÍ"
+];
+(function(){
+  function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var sel = document.getElementById("cidadeProva");
+    if(!sel) return;
+    (window.CIDADES_PROVA || []).slice().sort(function(a,b){ return a.localeCompare(b,"pt-BR"); })
+      .forEach(function(c){
+        var o = document.createElement("option");
+        o.value = c; o.textContent = c;
+        sel.appendChild(o);
+      });
   });
 })();
 </script>
