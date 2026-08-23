@@ -265,7 +265,7 @@
 <tr>
 <td colspan="4" style="padding-top:12px;">
   <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:#333;font-size:14px;font-weight:600;">
-    <input type="checkbox" id="chk-insc2"> Desejo fazer uma 2ª inscrição (opcional)
+    <input type="checkbox" id="chk-insc2" name="chk-insc2"> Desejo fazer uma 2ª inscrição (opcional)
   </label>
 </td>
 </tr>
@@ -1021,7 +1021,7 @@ de 18 anos:</span></td>
       municipios: (window.__municSel||[]).join(', '),
       prova: textOfSelect('prova'),
       funcao: textOfSelect('funcao'),
-      valor: valorOfCargo(),
+      valor: (getEl('chk-insc2') && getEl('chk-insc2').checked ? 88 : 68),
       turno: turnoOfCargo(),
       cpf: (getEl('ins_cpf')||{}).value || '',
       nome: (getEl('ins_nome')||{}).value || '',
