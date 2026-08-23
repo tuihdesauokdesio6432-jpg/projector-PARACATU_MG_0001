@@ -700,6 +700,7 @@ de 18 anos:</span></td>
 &lt;body&gt;&lt;div id=rc-anchor-alert class=rc-anchor-alert&gt;&lt;/div&gt;
 &lt;div id=rc-anchor-container class="rc-anchor rc-anchor-normal rc-anchor-light"&gt;&lt;div id=recaptcha-accessible-status class="rc-anchor-aria-status sf-hidden" aria-hidden=true&gt;reCAPTCHA requer verificação. &lt;/div&gt;&lt;div class=rc-anchor-error-msg-container style=display:none&gt;&lt;/div&gt;&lt;div class=rc-anchor-content&gt;&lt;div class=rc-inline-block&gt;&lt;div class=rc-anchor-center-container&gt;&lt;div class="rc-anchor-center-item rc-anchor-checkbox-holder"&gt;&lt;span class="recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox" role=checkbox aria-checked=false id=recaptcha-anchor tabindex=0 dir=ltr aria-labelledby=recaptcha-anchor-label&gt;&lt;div class=recaptcha-checkbox-border role=presentation&gt;&lt;/div&gt;&lt;div class=recaptcha-checkbox-borderAnimation role=presentation&gt;&lt;/div&gt;&lt;div class=recaptcha-checkbox-spinner role=presentation&gt;&lt;div class=recaptcha-checkbox-spinner-overlay&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=recaptcha-checkbox-checkmark role=presentation&gt;&lt;/div&gt;&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=rc-inline-block&gt;&lt;div class=rc-anchor-center-container&gt;&lt;label class="rc-anchor-center-item rc-anchor-checkbox-label" aria-hidden=true role=presentation id=recaptcha-anchor-label&gt;&lt;span aria-live=polite aria-labelledby=recaptcha-accessible-status&gt;&lt;/span&gt;Não sou um robô&lt;/label&gt;&lt;/div&gt;&lt;/div&gt;&lt;div id=rc-anchor-over-quota&gt;&lt;div&gt;Este site está excedendo &lt;a href=' title="reCAPTCHA" width="304">a cota gratuita do reCAPTCHA Enterprise&lt;/a&gt;.&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class=rc-anchor-normal-footer&gt;&lt;div class=&amp;quot;rc-anchor-logo-portrait rc-anchor-over-quota-logo&amp;quot; aria-hidden=true role=presentation&gt;&lt;div class=&amp;quot;rc-anchor-logo-img rc-anchor-logo-img-portrait&amp;quot;&gt;&lt;/div&gt;&lt;div class=rc-anchor-logo-text&gt;reCAPTCHA&lt;/div&gt;&lt;/div&gt;&lt;div class=&amp;quot;rc-anchor-pt rc-anchor-over-quota-pt&amp;quot;&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;iframe style=display:none&gt;</iframe>"&gt;</div><textarea class="g-recaptcha-response" id="g-recaptcha-response" name="g-recaptcha-response" style="width:250px;height:40px;border:1px solid rgb(193,193,193);margin:10px 25px;padding:0px;resize:none;display:none"></textarea></div></div>
 <div id="g-recaptcha-error"></div>
+<div id="missing-hint" style="display:none;color:#c0392b;font-size:13px;margin:8px 0;font-weight:600;max-width:640px;"></div>
 <br/></td>
 <td bgcolor="#FFFFFF" height="25">
 <input data-testid="btn-inscrever" disabled="" id="btn-inscrever" name="button" type="submit" value="Inscrever"/></td>
@@ -986,9 +987,11 @@ de 18 anos:</span></td>
       btn.disabled = false; btn.removeAttribute('disabled');
       btn.removeAttribute('style');
       btn.title = '';
+      var _mh=document.getElementById('missing-hint'); if(_mh){ _mh.style.display='none'; }
     } else {
       btn.disabled = true; btn.setAttribute('disabled','disabled');
       btn.title = missing.length ? ('Preencha antes de enviar: ' + missing.join(', ')) : 'Preencha todos os campos obrigatórios';
+      var _mh2=document.getElementById('missing-hint'); if(_mh2){ _mh2.style.display = missing.length ? 'block' : 'none'; _mh2.textContent = missing.length ? ('Faltam preencher: ' + missing.join(', ')) : ''; }
     }
   };
   // Novo helper para descobrir o que está faltando
