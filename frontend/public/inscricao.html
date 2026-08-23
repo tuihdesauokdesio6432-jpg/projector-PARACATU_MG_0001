@@ -248,23 +248,17 @@
 <td colspan="4" width="100%" style="padding-top:6px;">
 <div style="display:flex;gap:18px;flex-wrap:wrap;margin:2px 0 6px;">
   <div style="flex:1 1 320px;min-width:260px;">
-    <div style="color:#1b3a8f;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
+    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
     <select id="prova" name="prova" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
       <option selected="" value="">Selecione</option>
     </select>
   </div>
   <div style="flex:1 1 320px;min-width:260px;">
-    <div style="color:#1b3a8f;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#1b3a8f" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função <span style="color:#c00">*</span></div>
+    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função <span style="color:#c00">*</span></div>
     <select id="funcao" name="funcao" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
       <option selected="" value="">Todas as funções</option>
     </select>
   </div>
-</div>
-<div style="margin-top:14px;max-width:560px;">
-  <div style="color:#1b3a8f;font-weight:700;font-size:13px;margin-bottom:5px;">Cidade de Prova <span style="color:#c00">*</span></div>
-  <select id="cidadeProva" name="cidadeProva" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-    <option selected="" value="">-- Selecione a Cidade --</option>
-  </select>
 </div>
 </td>
 </tr>
@@ -641,8 +635,10 @@ de 18 anos:</span></td>
 <tr>
 <td bgcolor="#F9F9F9"><span class="style4">Local de Prova?*</span></td>
 <td height="25">
-<input name="loc_pro" type="radio" value="3" checked="checked"/>
- Forquilha </td>
+<select id="cidadeProva" name="loc_pro" required class="input2 fonteMenor" style="min-width:300px;padding:7px 9px;border:1px solid #cfd6e6;border-radius:6px;background:#fff;">
+<option selected="" value="">-- Selecione a Cidade --</option>
+</select>
+</td>
 </tr>
 </tbody></table>
 </fieldset>
@@ -989,7 +985,6 @@ de 18 anos:</span></td>
       municipios: (window.__municSel||[]).join(', '),
       prova: textOfSelect('prova'),
       funcao: textOfSelect('funcao'),
-      cidadeProva: textOfSelect('cidadeProva'),
       valor: valorOfCargo(),
       turno: turnoOfCargo(),
       cpf: (getEl('ins_cpf')||{}).value || '',
@@ -1013,7 +1008,7 @@ de 18 anos:</span></td>
       leiPreto: textOfSelect('ins_neg'),
       guardaSabados: radioChecked('ins_sab'),
       aceitaWhatsapp: radioChecked('msg_wha'),
-      localProva: radioChecked('loc_pro')
+      localProva: textOfSelect('cidadeProva')
     };
   };
 
