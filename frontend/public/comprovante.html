@@ -183,7 +183,7 @@
 
 <div id="centro">
 <div id="centroCentro">
-<h2 class="tag">Concursos</h2>
+<h2 class="tag">Seletivos</h2>
 <div class="bloco">
 <div id="impressao">
 <table border="0" cellpadding="5" cellspacing="5" width="550">
@@ -433,4 +433,57 @@ jdiv,agent-icon,.jivo-btn,[id^="jvlabelWrap"],[class^="jv-"],[class*=" jv-"]{dis
   });
 })();
 </script>
+
+<script>
+/* Comprovante: mostra dados completos da Seleção de Cargo (1ª e 2ª inscrição) */
+(function(){
+  function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var raw=null; try { raw = sessionStorage.getItem('inscricaoDados'); } catch(e){}
+    if(!raw){ try { raw = localStorage.getItem('inscricaoDados'); } catch(e){} }
+    if(!raw) return;
+    var d; try { d = JSON.parse(raw); } catch(e){ return; }
+
+    // localizar a célula "Cargo:"
+    var tds = document.querySelectorAll('td'), cargoTd=null;
+    for(var i=0;i<tds.length;i++){ if(/\bCargo:/.test(tds[i].textContent||'')){ cargoTd = tds[i]; break; } }
+    if(!cargoTd) return;
+    var cargoRow = cargoTd.parentNode;
+    var tbody = cargoRow.parentNode;
+
+    // renomear Cargo -> Função (mantém a célula "Código" ao lado)
+    cargoTd.innerHTML = '<strong>Fun\u00e7\u00e3o:</strong><br/>\n ' + (d.funcao || d.cargo || '\u2014');
+
+    function mkRow(label, value){
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td class="borda" colspan="3" valign="top"><strong>'+label+':</strong><br/>\n '+(value && String(value).trim() ? value : '\u2014')+'</td>';
+      return tr;
+    }
+    function mkHeader(txt){
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td class="borda" colspan="3" valign="top" style="background:#efefef;"><strong>'+txt+'</strong></td>';
+      return tr;
+    }
+
+    // ANTES da Função: 1ª Inscrição, NRE, Município(s), Prova
+    tbody.insertBefore(mkHeader('1\u00aa Inscri\u00e7\u00e3o'), cargoRow);
+    tbody.insertBefore(mkRow('N\u00facleo Regional de Educa\u00e7\u00e3o', d.nre), cargoRow);
+    tbody.insertBefore(mkRow('Munic\u00edpio(s)', d.municipios), cargoRow);
+    tbody.insertBefore(mkRow('Prova', d.prova), cargoRow);
+
+    // DEPOIS da Função: 2ª Inscrição (se houver) + Local de Prova
+    var ref = cargoRow.nextSibling;
+    function insAfter(node){ tbody.insertBefore(node, ref); }
+    if(String(d.segundaInscricao||'').trim() === 'Sim'){
+      insAfter(mkHeader('2\u00aa Inscri\u00e7\u00e3o'));
+      insAfter(mkRow('N\u00facleo Regional de Educa\u00e7\u00e3o (2\u00aa)', d.nre2));
+      insAfter(mkRow('Munic\u00edpio(s) (2\u00aa)', d.municipios2));
+      insAfter(mkRow('Prova (2\u00aa)', d.prova2));
+      insAfter(mkRow('Fun\u00e7\u00e3o (2\u00aa)', d.funcao2));
+    }
+    insAfter(mkRow('Local de Prova', d.localProva || d.cidadeProva));
+  });
+})();
+</script>
+
 </body></html>

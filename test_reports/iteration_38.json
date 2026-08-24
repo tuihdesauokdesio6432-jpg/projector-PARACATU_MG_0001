@@ -1,0 +1,24 @@
+{
+  "summary": "Frontend-only verification of /comprovante.html receipt rendering after inline script injection. Seeded sessionStorage 'inscricaoDados' via Playwright add_init_script for two scenarios: (1) two inscriptions with segundaInscricao='Sim', (2) single inscription. All assertions passed.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "comprovante.html", "issues": ["Legacy 'Concurso:' label with dash value still renders at top of the receipt table (not part of this fix scope, but visually redundant now that 1ª/2ª Inscrição sections carry the details). Consider hiding it."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Inline script correctly falls back to localStorage and to d.cargo/d.cidadeProva when needed - good defensive coding.",
+    "Optional cleanup: remove or hide the empty 'Concurso:' row at the top of the receipt to avoid duplicated/empty section context."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a", "frontend": "100%"},
+  "seed_data_creation": "Seeded sessionStorage 'inscricaoDados' JSON per spec (both two-inscription and single-inscription variants).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Use page.add_init_script to seed sessionStorage BEFORE goto, then read document.body.innerText to assert labels/values. Both scenarios asserted: 1ª Inscrição header + NRE (IRATI) + Municípios (FERNANDES PINHEIRO, GUAMIRANGA) + Prova + Função (renamed from Cargo) + Local de Prova (MARINGÁ); with segundaInscricao='Sim' also 2ª Inscrição header + NRE (CURITIBA) + Municípios (SETOR BOQUEIRÃO) + Prova (Gestão de Negócios) + Função (GN - Recursos Humanos). Heading now reads 'Seletivos' (previously 'Concursos').",
+  "rca of the issue": "Fix verified working: appended <script> locates the 'Cargo:' <td>, renames it to 'Função:', and injects the missing rows before/after using insertBefore. Handles segundaInscricao='Sim' branch and always appends Local de Prova at the end."
+}
