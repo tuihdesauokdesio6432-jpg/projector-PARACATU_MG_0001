@@ -26,10 +26,15 @@ NÃO é mais o PSS SEED 2026 (PR). Agora é o **Concurso Público do Município 
 
 ## Formulário inscricao.html — Seleção de Cargo (24/08/2026)
 - Sistema antigo (NRE→Municípios→Prova→Função + 2ª inscrição) REMOVIDO.
-- Agora só 2 selects: **Certame** (id=certame, name=certame) e **CARGO** (id=cargoSel, name=cargoSel).
-- Cargos embutidos por edital (JSON no script). Certame pré-selecionado do sessionStorage/param.
-- `__collectFormData`: concurso=texto do certame, certame=02/03, cargo=texto do cargo, funcao=cargo, valor=data-valor do cargo. nre/municipios/prova/2ª-inscrição zerados (compat).
-- **VALOR (PENDENTE CONFIRMAÇÃO)**: regra provisória por prefixo do código do cargo — 1xx/2xx=R$70, 3xx/4xx=R$90, 5xx/6xx=R$110. Vai direto ao PIX. Aguardando tabela oficial do usuário.
+- Agora só 2 selects: **Certame** (id=certame) e **CARGO** (id=cargoSel). Cargos embutidos por edital (JSON). Certame pré-selecionado do sessionStorage/param.
+- Ao selecionar cargo, mostra bloco #cargo-info: Cargo / Período de Inscrição / Data da Prova / Valor da Inscrição.
+- **TABELA DE PREÇOS EDITAL 02 (CONFIRMADA pelo usuário 24/08):**
+  - 1xx/2xx (fundamental): R$70, prova 11/10/2026 09:15:00
+  - 3xx/4xx (médio/técnico): R$90, prova 11/10/2026 14:45:00
+  - 5xx/6xx (superior/médico): R$110, prova 11/10/2026 14:45:00
+  - Período de Inscrição Edital 02: 03/08/26 09:00 - 25/08/26 23:59
+- **EDITAL 03 (Guarda Civil) — PENDENTE confirmação**: usando R$90, período 27/07/26 09:00-25/08/26 16:00, prova 20/09/2026 09:15:00.
+- Lógica em INFO{} + tierOf() no script inline do fieldset. `valor` (data-valor por opção) flui p/ __collectFormData → pagamento PIX.
 
 ## key DB schema
 - `cadastros`, `inscricoes` {cpf,cargo,concurso,valor,pix_status,status}, `settings`, `events`, `accesses`
