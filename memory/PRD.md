@@ -49,3 +49,6 @@ NÃO é mais o PSS SEED 2026 (PR). Agora é o **Concurso Público do Município 
 
 ## Deploy
 - Usuário faz deploy em VPS separada via "Save to Github" → outro agente faz git pull.
+
+## Changelog
+- 2026-06 (fork): Removido o logo grande (`<img id=logo>`) do topo da `index.html` (linhas 135-137). Brasão de Paracatu/MG agora aparece somente dentro dos dois cards de edital. Verificado por screenshot.
