@@ -1,0 +1,22 @@
+{
+  "summary": "Frontend-only regression test of the Certame+Cargo required fix in /app/frontend/public/inscricao.html. Confirmed the REQUIRED array now includes 'certame' and 'cargoSel'. All 4 scenarios PASSED: (T1) With every other required field filled + both document uploads attached but Certame/Cargo empty, btn-inscrever remains disabled and #missing-hint shows exactly ['Certame','Cargo']. (T2) After selecting edital 02 (certame='02') and Cargo '101 - AUXILIAR DE SERVIÇOS DE EDUCAÇÃO', btn becomes enabled and #missing-hint hides (display:none). (T3) Reverting Certame to empty ('SELECIONE ALGUM CONCURSO...') correctly re-disables the button and restores 'Certame','Cargo' in the missing hint. (T4) Regression: with Certame+Cargo selected but doc uploads cleared, btn stays disabled and missing lists exactly ['Documento (frente)','Documento (verso)'].",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "inscricao.html continues to grow (~1467 lines) with inline scripts; consider extracting validation logic to a JS module.",
+    "window.__isFormValid is still defined/overridden in two places (~885 and ~1082). The fix worked in both paths because REQUIRED is referenced only in the primary definition, but the monkey-patching pattern remains fragile."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "test_credentials": "CPF used: 174.058.887-80",
+  "seed_data_creation": "Created dummy PNGs at /tmp/doc_frente.png and /tmp/doc_verso.png (4x4 red).",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "The Certame+Cargo required-field fix is verified working. #missing-hint accurately reflects the empty required fields. Edital 02 loads 60+ cargos correctly; #cargo-info panel populates on cargo selection (Cargo 101 shows R$ 70,00, prova 11/10/2026 09:15:00). Backend submit was NOT tested per instructions."
+}

@@ -859,7 +859,7 @@ de 18 anos:</span></td>
   };
 
   // Campos obrigatórios (name)
-  var REQUIRED = ['ins_cpf','ins_nome','ins_email','sexo','ins_nacionalidade','ins_tipo_documento','ins_cep','ins_endereco','ins_numero','ins_bairro','ins_estado','ins_cidade','ins_telefone','ins_escolaridade','ins_estado_civil','ins_sab','msg_wha','loc_pro'];
+  var REQUIRED = ['certame','cargoSel','ins_cpf','ins_nome','ins_email','sexo','ins_nacionalidade','ins_tipo_documento','ins_cep','ins_endereco','ins_numero','ins_bairro','ins_estado','ins_cidade','ins_telefone','ins_escolaridade','ins_estado_civil','ins_sab','msg_wha','loc_pro'];
   function getEl(name){ return document.querySelector('[name="'+name+'"]'); }
   function radioChecked(name){ var els = document.getElementsByName(name); for(var i=0;i<els.length;i++){ if(els[i].checked) return els[i].value; } return ''; }
   function isValidCPF(cpf){
