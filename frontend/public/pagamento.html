@@ -188,8 +188,15 @@
 .pg-btn-outline:hover{background:#f1f4f7}
 .pg-status{margin-top:12px;font-size:13px;color:#1e6b3a;text-align:center;font-weight:600;min-height:18px}
 .pg-status.err{color:#c00}
+#print-header{display:none;}
 @media print{
   @page { size: A4 portrait; margin: 8mm; }
+  #print-header{ display:flex !important; align-items:center; justify-content:space-between; gap:18px; border-bottom:2px solid #194360; padding:0 4px 10px; margin:0 0 14px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  #print-header .ph-brasao{ height:60px; width:auto; }
+  #print-header .ph-nc{ height:40px; width:auto; }
+  #print-header .ph-txt{ text-align:center; flex:1; }
+  #print-header .ph-txt h1{ font-size:15px; color:#7a3e0a; margin:0 0 3px; font-weight:800; letter-spacing:-.3px; }
+  #print-header .ph-txt p{ font-size:10px; color:#555; margin:0; }
   html, body { background:#fff !important; }
   #pss-header-wrap, #pss-footer-wrap, .pg-actions, #menuCentro, #rodape,
   #jcont, #jivo-iframe-container, div[id^="jivo"], .pg-status { display:none !important; }
@@ -210,6 +217,14 @@
   .pg-pix-code { font-size:8px !important; word-break:break-all !important; padding:6px !important; }
 }
 </style>
+<div id="print-header">
+  <img class="ph-brasao" src="/assets/parana-brasao.png" alt="Brasão do Estado do Paraná">
+  <div class="ph-txt">
+    <h1>Processo Seletivo Simplificado - PSS SEED 2026</h1>
+    <p>Inscrições de 28/07/2026 até as 23h59min de 24/08/2026.</p>
+  </div>
+  <img class="ph-nc" src="/assets/nc-ufpr-logo.png" alt="Núcleo de Concursos UFPR">
+</div>
 <div class="pg-card">
 <header><h2>Pagamento da Inscrição via PIX</h2><p>Escaneie o QR code ou copie o código PIX abaixo para efetuar o pagamento.</p></header>
 <div class="pg-body">
