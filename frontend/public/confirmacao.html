@@ -75,49 +75,43 @@ table.dados tr:last-child th,table.dados tr:last-child td{border-bottom:none}
 <style>
 #pss-header-wrap{font-family:"Segoe UI",Arial,Helvetica,sans-serif;}
 #pss-header-wrap *{box-sizing:border-box;}
-#pss-header-wrap .pss-gov{background:#fff;border-bottom:1px solid #e6e6e6;}
-#pss-header-wrap .pss-gov .in{max-width:1200px;margin:0 auto;padding:8px 20px;}
-#pss-header-wrap .pss-gov b{font-weight:800;color:#071D41;font-size:15px;}
-#pss-header-wrap .pss-gov b span{color:#168821;}
-#pss-header-wrap .pss-top{background:#fff;border-bottom:1px solid #eee;}
-#pss-header-wrap .pss-top .in{max-width:1200px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-#pss-header-wrap .pss-brand img{height:52px;width:auto;display:block;}
-#pss-header-wrap .pss-nav{display:flex;gap:8px;flex-wrap:wrap;}
-#pss-header-wrap .pss-nav a{color:#3a2a17;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.4px;text-decoration:none;padding:10px 16px;border-radius:8px;transition:background-color .15s ease,color .15s ease;}
-#pss-header-wrap .pss-nav a:hover{background:#fbeadb;color:#c2410c;}
-#pss-header-wrap .pss-nav a.pss-cta{background:#e8590c;color:#fff;}
-#pss-header-wrap .pss-nav a.pss-cta:hover{background:#c2410c;color:#fff;}
-#pss-header-wrap .pss-crumb{background:#f4eee6;border-bottom:1px solid #e7ddce;}
-#pss-header-wrap .pss-crumb .in{max-width:1200px;margin:0 auto;padding:10px 20px;font-size:13px;color:#7a6a56;}
-#pss-header-wrap .pss-crumb a{color:#c2410c;text-decoration:none;}
-#pss-header-wrap .pss-info{background:#fdf6ee;}
-#pss-header-wrap .pss-info .in{max-width:1200px;margin:0 auto;padding:22px 20px;}
-#pss-header-wrap .pss-card{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid #f0e4d5;border-radius:16px;padding:20px 26px;box-shadow:0 8px 24px rgba(90,60,20,.06);}
-#pss-header-wrap .pss-card img{height:84px;width:auto;flex:0 0 auto;}
-#pss-header-wrap .pss-card h1{margin:0 0 6px;font-size:26px;color:#7a3e0a;font-weight:800;letter-spacing:-.4px;line-height:1.15;}
-#pss-header-wrap .pss-card p{margin:0;color:#8a7a66;font-size:15px;}
+#pss-header-wrap .ibgp-nav{background:#fff;border-bottom:1px solid #eee;box-shadow:0 1px 5px rgba(0,0,0,.06);}
+#pss-header-wrap .ibgp-nav .in{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:30px;}
+#pss-header-wrap .ibgp-logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+#pss-header-wrap .ibgp-logo .mark{width:26px;height:26px;background:#c0392b;clip-path:polygon(0 0,100% 50%,0 100%,26% 50%);}
+#pss-header-wrap .ibgp-logo .name{font-weight:800;font-size:23px;color:#3a3a3a;letter-spacing:1px;}
+#pss-header-wrap .ibgp-nav .concursos{color:#4a4a4a;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;}
+#pss-header-wrap .ibgp-nav .cta{margin-left:auto;background:#b02a2a;color:#fff;text-decoration:none;padding:12px 28px;border-radius:6px;font-size:15px;transition:background-color .15s ease;}
+#pss-header-wrap .ibgp-nav .cta:hover{background:#8e1f1f;}
+#pss-header-wrap .ibgp-title{max-width:1200px;margin:0 auto;padding:34px 24px 30px;display:flex;align-items:flex-start;gap:30px;}
+#pss-header-wrap .ibgp-title img{height:150px;width:auto;flex:0 0 auto;}
+#pss-header-wrap .ibgp-title .txt{flex:1;text-align:center;padding-top:10px;}
+#pss-header-wrap .ibgp-title h1{margin:0 0 12px;font-size:30px;color:#555;font-weight:400;letter-spacing:.5px;}
+#pss-header-wrap .ibgp-title p{margin:0;color:#666;font-size:17px;}
 @media (max-width:640px){
-  #pss-header-wrap .pss-card{gap:14px;padding:16px;}
-  #pss-header-wrap .pss-card img{height:60px;}
-  #pss-header-wrap .pss-card h1{font-size:19px;}
-  #pss-header-wrap .pss-brand img{height:42px;}
+  #pss-header-wrap .ibgp-title{flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}
+  #pss-header-wrap .ibgp-title img{height:90px;}
+  #pss-header-wrap .ibgp-title h1{font-size:20px;}
+  #pss-header-wrap .ibgp-title p{font-size:14px;}
+  #pss-header-wrap .ibgp-nav .in{flex-wrap:wrap;gap:12px;}
+  #pss-header-wrap .ibgp-nav .cta{padding:10px 18px;font-size:13px;}
 }
 </style>
-<div class="pss-gov"><div class="in"><b>gov<span>.br</span></b></div></div>
-<div class="pss-top"><div class="in">
-  <a class="pss-brand" href="/"><img src="/assets/nc-ufpr-logo.png" alt="Núcleo de Concursos UFPR"></a>
-  <nav class="pss-nav"></nav>
+<div class="ibgp-nav"><div class="in">
+  <a class="ibgp-logo" href="/"><span class="mark"></span><span class="name">IBGP</span></a>
+  <a class="concursos" href="/">CONCURSOS</a>
+  <a class="cta" href="/">Área do Candidato</a>
 </div></div>
-<div class="pss-crumb"><div class="in"><a href="/">Home</a> / Processo Seletivo Simplificado - PSS SEED 2026</div></div>
-<div class="pss-info"><div class="in">
-  <div class="pss-card">
-    <img src="/assets/parana-brasao.png" alt="Brasão do Estado do Paraná">
-    <div>
-      <h1>Processo Seletivo Simplificado - PSS SEED 2026</h1>
-      <p>Inscrições de 28/07/2026 até as 23h59min de 24/08/2026.</p>
-    </div>
+<div class="ibgp-title">
+  <img src="/assets/paracatu-brasao.png" alt="Brasão de Paracatu/MG">
+  <div class="txt">
+    <h1>MUNICÍPIO DE PARACATU/MG</h1>
+    <p id="ibgp-concurso-sub">CONCURSO PÚBLICO DO MUNICÍPIO DE PARACATU/MG - EDITAL Nº 02/2026</p>
   </div>
-</div></div>
+</div>
+<script>
+(function(){try{var q=new URLSearchParams(location.search);var ed=q.get('edital');if(ed){sessionStorage.setItem('pss_edital',ed);}else{ed=sessionStorage.getItem('pss_edital');}var subs={'02':'CONCURSO PÚBLICO DO MUNICÍPIO DE PARACATU/MG - EDITAL Nº 02/2026','03':'CONCURSO PÚBLICO DA GUARDA CIVIL MUNICIPAL DE PARACATU/MG - EDITAL Nº 03/2026'};if(ed&&subs[ed]){var e=document.getElementById('ibgp-concurso-sub');if(e)e.textContent=subs[ed];}}catch(e){}})();
+</script>
 </div>
 <div id="centroCentro">
 <p class="tag">Concursos</p>
@@ -158,35 +152,26 @@ Inscrição registrada com sucesso!
 </div>
 <div id="pss-footer-wrap">
 <style>
-#pss-footer-wrap{background:#4a2f16;color:#f0e6d8;font-family:"Segoe UI",Arial,Helvetica,sans-serif;padding:40px 20px 22px;}
+#pss-footer-wrap{background:#8f2b2b;color:#f0dede;font-family:"Segoe UI",Arial,Helvetica,sans-serif;padding:42px 24px;}
 #pss-footer-wrap *{box-sizing:border-box;}
-#pss-footer-wrap .cols{max-width:1200px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between;}
-#pss-footer-wrap .col{flex:1 1 260px;min-width:220px;}
-#pss-footer-wrap .logo-pill{display:inline-block;background:#fff;padding:12px 16px;border-radius:10px;margin-bottom:14px;}
-#pss-footer-wrap .logo-pill img{height:46px;width:auto;display:block;}
-#pss-footer-wrap h3{color:#fff;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.6px;}
-#pss-footer-wrap p{margin:0 0 6px;font-size:13px;line-height:1.6;color:#e0d3c1;}
-#pss-footer-wrap .copy{max-width:1200px;margin:22px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);font-size:12px;color:#c9b9a4;text-align:center;}
+#pss-footer-wrap .cols{max-width:1200px;margin:0 auto;display:flex;gap:60px;flex-wrap:wrap;}
+#pss-footer-wrap .col{flex:1 1 300px;min-width:240px;}
+#pss-footer-wrap h3{color:#fff;font-size:20px;margin:0 0 14px;font-weight:400;border-bottom:1px dotted rgba(255,255,255,.45);padding-bottom:8px;}
+#pss-footer-wrap p{margin:0 0 10px;font-size:14px;line-height:1.6;color:#f0dede;}
+#pss-footer-wrap a{color:#f0dede;text-decoration:none;}
+#pss-footer-wrap a:hover{text-decoration:underline;}
 </style>
 <div class="cols">
   <div class="col">
-    <span class="logo-pill"><img src="/assets/nc-ufpr-logo.png" alt="Núcleo de Concursos UFPR"></span>
-    <p>Núcleo de Concursos da Universidade Federal do Paraná — organização e execução de processos seletivos e concursos públicos.</p>
+    <h3>IBGP CONCURSOS</h3>
+    <p><a href="mailto:contato@ibgp.org.br">contato@ibgp.org.br</a></p>
+    <p>Avenida do Contorno, 1480 - Floresta</p>
   </div>
   <div class="col">
-    <h3>Processo Seletivo</h3>
-    <p>Processo Seletivo Simplificado - PSS SEED 2026</p>
-    <p>Edital n.º 52/2026 - GS/SEED</p>
-    <p>Inscrições: 28/07 a 24/08/2026 (até 23h59min)</p>
-    <p>Realização: SEED/PR · Execução: NC/UFPR</p>
-  </div>
-  <div class="col">
-    <h3>Atendimento</h3>
-    <p>Campus I (Agrárias) — Curitiba/PR</p>
-    <p>Segunda a sexta, das 8h às 17h</p>
+    <h3>Mapa Site:</h3>
+    <p><a href="/">Certames</a></p>
   </div>
 </div>
-<div class="copy">© 2026 Núcleo de Concursos — UFPR. Todos os direitos reservados.</div>
 </div>
 
 <script>

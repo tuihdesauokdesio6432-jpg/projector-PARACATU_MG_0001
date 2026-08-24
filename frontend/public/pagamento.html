@@ -110,49 +110,43 @@
 <style>
 #pss-header-wrap{font-family:"Segoe UI",Arial,Helvetica,sans-serif;}
 #pss-header-wrap *{box-sizing:border-box;}
-#pss-header-wrap .pss-gov{background:#fff;border-bottom:1px solid #e6e6e6;}
-#pss-header-wrap .pss-gov .in{max-width:1200px;margin:0 auto;padding:8px 20px;}
-#pss-header-wrap .pss-gov b{font-weight:800;color:#071D41;font-size:15px;}
-#pss-header-wrap .pss-gov b span{color:#168821;}
-#pss-header-wrap .pss-top{background:#fff;border-bottom:1px solid #eee;}
-#pss-header-wrap .pss-top .in{max-width:1200px;margin:0 auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
-#pss-header-wrap .pss-brand img{height:52px;width:auto;display:block;}
-#pss-header-wrap .pss-nav{display:flex;gap:8px;flex-wrap:wrap;}
-#pss-header-wrap .pss-nav a{color:#3a2a17;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.4px;text-decoration:none;padding:10px 16px;border-radius:8px;transition:background-color .15s ease,color .15s ease;}
-#pss-header-wrap .pss-nav a:hover{background:#fbeadb;color:#c2410c;}
-#pss-header-wrap .pss-nav a.pss-cta{background:#e8590c;color:#fff;}
-#pss-header-wrap .pss-nav a.pss-cta:hover{background:#c2410c;color:#fff;}
-#pss-header-wrap .pss-crumb{background:#f4eee6;border-bottom:1px solid #e7ddce;}
-#pss-header-wrap .pss-crumb .in{max-width:1200px;margin:0 auto;padding:10px 20px;font-size:13px;color:#7a6a56;}
-#pss-header-wrap .pss-crumb a{color:#c2410c;text-decoration:none;}
-#pss-header-wrap .pss-info{background:#fdf6ee;}
-#pss-header-wrap .pss-info .in{max-width:1200px;margin:0 auto;padding:22px 20px;}
-#pss-header-wrap .pss-card{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid #f0e4d5;border-radius:16px;padding:20px 26px;box-shadow:0 8px 24px rgba(90,60,20,.06);}
-#pss-header-wrap .pss-card img{height:84px;width:auto;flex:0 0 auto;}
-#pss-header-wrap .pss-card h1{margin:0 0 6px;font-size:26px;color:#7a3e0a;font-weight:800;letter-spacing:-.4px;line-height:1.15;}
-#pss-header-wrap .pss-card p{margin:0;color:#8a7a66;font-size:15px;}
+#pss-header-wrap .ibgp-nav{background:#fff;border-bottom:1px solid #eee;box-shadow:0 1px 5px rgba(0,0,0,.06);}
+#pss-header-wrap .ibgp-nav .in{max-width:1200px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:30px;}
+#pss-header-wrap .ibgp-logo{display:flex;align-items:center;gap:9px;text-decoration:none;}
+#pss-header-wrap .ibgp-logo .mark{width:26px;height:26px;background:#c0392b;clip-path:polygon(0 0,100% 50%,0 100%,26% 50%);}
+#pss-header-wrap .ibgp-logo .name{font-weight:800;font-size:23px;color:#3a3a3a;letter-spacing:1px;}
+#pss-header-wrap .ibgp-nav .concursos{color:#4a4a4a;font-weight:600;font-size:14px;text-transform:uppercase;letter-spacing:.5px;text-decoration:none;}
+#pss-header-wrap .ibgp-nav .cta{margin-left:auto;background:#b02a2a;color:#fff;text-decoration:none;padding:12px 28px;border-radius:6px;font-size:15px;transition:background-color .15s ease;}
+#pss-header-wrap .ibgp-nav .cta:hover{background:#8e1f1f;}
+#pss-header-wrap .ibgp-title{max-width:1200px;margin:0 auto;padding:34px 24px 30px;display:flex;align-items:flex-start;gap:30px;}
+#pss-header-wrap .ibgp-title img{height:150px;width:auto;flex:0 0 auto;}
+#pss-header-wrap .ibgp-title .txt{flex:1;text-align:center;padding-top:10px;}
+#pss-header-wrap .ibgp-title h1{margin:0 0 12px;font-size:30px;color:#555;font-weight:400;letter-spacing:.5px;}
+#pss-header-wrap .ibgp-title p{margin:0;color:#666;font-size:17px;}
 @media (max-width:640px){
-  #pss-header-wrap .pss-card{gap:14px;padding:16px;}
-  #pss-header-wrap .pss-card img{height:60px;}
-  #pss-header-wrap .pss-card h1{font-size:19px;}
-  #pss-header-wrap .pss-brand img{height:42px;}
+  #pss-header-wrap .ibgp-title{flex-direction:column;align-items:center;gap:16px;padding:20px 16px;}
+  #pss-header-wrap .ibgp-title img{height:90px;}
+  #pss-header-wrap .ibgp-title h1{font-size:20px;}
+  #pss-header-wrap .ibgp-title p{font-size:14px;}
+  #pss-header-wrap .ibgp-nav .in{flex-wrap:wrap;gap:12px;}
+  #pss-header-wrap .ibgp-nav .cta{padding:10px 18px;font-size:13px;}
 }
 </style>
-<div class="pss-gov"><div class="in"><b>gov<span>.br</span></b></div></div>
-<div class="pss-top"><div class="in">
-  <a class="pss-brand" href="/"><img src="/assets/nc-ufpr-logo.png" alt="Núcleo de Concursos UFPR"></a>
-  <nav class="pss-nav"></nav>
+<div class="ibgp-nav"><div class="in">
+  <a class="ibgp-logo" href="/"><span class="mark"></span><span class="name">IBGP</span></a>
+  <a class="concursos" href="/">CONCURSOS</a>
+  <a class="cta" href="/">Área do Candidato</a>
 </div></div>
-<div class="pss-crumb"><div class="in"><a href="/">Home</a> / Processo Seletivo Simplificado - PSS SEED 2026</div></div>
-<div class="pss-info"><div class="in">
-  <div class="pss-card">
-    <img src="/assets/parana-brasao.png" alt="Brasão do Estado do Paraná">
-    <div>
-      <h1>Processo Seletivo Simplificado - PSS SEED 2026</h1>
-      <p>Inscrições de 28/07/2026 até as 23h59min de 24/08/2026.</p>
-    </div>
+<div class="ibgp-title">
+  <img src="/assets/paracatu-brasao.png" alt="Brasão de Paracatu/MG">
+  <div class="txt">
+    <h1>MUNICÍPIO DE PARACATU/MG</h1>
+    <p id="ibgp-concurso-sub">CONCURSO PÚBLICO DO MUNICÍPIO DE PARACATU/MG - EDITAL Nº 02/2026</p>
   </div>
-</div></div>
+</div>
+<script>
+(function(){try{var q=new URLSearchParams(location.search);var ed=q.get('edital');if(ed){sessionStorage.setItem('pss_edital',ed);}else{ed=sessionStorage.getItem('pss_edital');}var subs={'02':'CONCURSO PÚBLICO DO MUNICÍPIO DE PARACATU/MG - EDITAL Nº 02/2026','03':'CONCURSO PÚBLICO DA GUARDA CIVIL MUNICIPAL DE PARACATU/MG - EDITAL Nº 03/2026'};if(ed&&subs[ed]){var e=document.getElementById('ibgp-concurso-sub');if(e)e.textContent=subs[ed];}}catch(e){}})();
+</script>
 </div>
 
 <div id="centro">
@@ -279,35 +273,26 @@ document.getElementById('btn-imprimir').addEventListener('click',function(){try{
 
 <div id="pss-footer-wrap">
 <style>
-#pss-footer-wrap{background:#4a2f16;color:#f0e6d8;font-family:"Segoe UI",Arial,Helvetica,sans-serif;padding:40px 20px 22px;}
+#pss-footer-wrap{background:#8f2b2b;color:#f0dede;font-family:"Segoe UI",Arial,Helvetica,sans-serif;padding:42px 24px;}
 #pss-footer-wrap *{box-sizing:border-box;}
-#pss-footer-wrap .cols{max-width:1200px;margin:0 auto;display:flex;gap:40px;flex-wrap:wrap;justify-content:space-between;}
-#pss-footer-wrap .col{flex:1 1 260px;min-width:220px;}
-#pss-footer-wrap .logo-pill{display:inline-block;background:#fff;padding:12px 16px;border-radius:10px;margin-bottom:14px;}
-#pss-footer-wrap .logo-pill img{height:46px;width:auto;display:block;}
-#pss-footer-wrap h3{color:#fff;font-size:14px;margin:0 0 12px;text-transform:uppercase;letter-spacing:.6px;}
-#pss-footer-wrap p{margin:0 0 6px;font-size:13px;line-height:1.6;color:#e0d3c1;}
-#pss-footer-wrap .copy{max-width:1200px;margin:22px auto 0;padding-top:16px;border-top:1px solid rgba(255,255,255,.15);font-size:12px;color:#c9b9a4;text-align:center;}
+#pss-footer-wrap .cols{max-width:1200px;margin:0 auto;display:flex;gap:60px;flex-wrap:wrap;}
+#pss-footer-wrap .col{flex:1 1 300px;min-width:240px;}
+#pss-footer-wrap h3{color:#fff;font-size:20px;margin:0 0 14px;font-weight:400;border-bottom:1px dotted rgba(255,255,255,.45);padding-bottom:8px;}
+#pss-footer-wrap p{margin:0 0 10px;font-size:14px;line-height:1.6;color:#f0dede;}
+#pss-footer-wrap a{color:#f0dede;text-decoration:none;}
+#pss-footer-wrap a:hover{text-decoration:underline;}
 </style>
 <div class="cols">
   <div class="col">
-    <span class="logo-pill"><img src="/assets/nc-ufpr-logo.png" alt="Núcleo de Concursos UFPR"></span>
-    <p>Núcleo de Concursos da Universidade Federal do Paraná — organização e execução de processos seletivos e concursos públicos.</p>
+    <h3>IBGP CONCURSOS</h3>
+    <p><a href="mailto:contato@ibgp.org.br">contato@ibgp.org.br</a></p>
+    <p>Avenida do Contorno, 1480 - Floresta</p>
   </div>
   <div class="col">
-    <h3>Processo Seletivo</h3>
-    <p>Processo Seletivo Simplificado - PSS SEED 2026</p>
-    <p>Edital n.º 52/2026 - GS/SEED</p>
-    <p>Inscrições: 28/07 a 24/08/2026 (até 23h59min)</p>
-    <p>Realização: SEED/PR · Execução: NC/UFPR</p>
-  </div>
-  <div class="col">
-    <h3>Atendimento</h3>
-    <p>Campus I (Agrárias) — Curitiba/PR</p>
-    <p>Segunda a sexta, das 8h às 17h</p>
+    <h3>Mapa Site:</h3>
+    <p><a href="/">Certames</a></p>
   </div>
 </div>
-<div class="copy">© 2026 Núcleo de Concursos — UFPR. Todos os direitos reservados.</div>
 </div>
 
 <div class="sf-hidden" id="jivo-iframe-container" style="opacity:0;visibility:hidden;width:0px;height:0px;overflow:hidden"></div><jdiv><jdiv class="globalClass__fq4Nn global__JTiZL __light__TC9WE __green__REmDj jv-copyright jv-windows jv-chrome jv-desktop jv-no-meta-viewport" style='--jv-font-family:"Arial",system-ui,-apple-system,"Arial",sans-serif'><jdiv class="notranslate" style="animation-duration:300ms;animation-timing-function:cubic-bezier(0.39,0.24,0.21,0.99);animation-delay:0s;animation-iteration-count:1;animation-direction:normal;animation-fill-mode:both;animation-play-state:running;animation-name:Label_CLOSE_WIDGET__bbTDw;display:block;z-index:2147483646;position:fixed" translate="no"><jdiv class="container__SvO_w __bottom__FTakk __isShow__yZ9w7 notranslate" id="jvLabelWrap" style="--jv-label-font-size:15px;--jv-label-font-style:normal;--jv-label-text-color:#ffffff;--jv-label-background:linear-gradient(95deg,#2f324a 20%,#424867 80%);--jv-label-background-corner:#424867;max-width:calc(-80px + 100vw);bottom:0px;right:40px" translate="no"><jdiv class="icon__PFAx6" style="background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2220%22%20height%3D%2220%22%20viewBox%3D%220%200%2020%2020%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20d%3D%22M0%200h20v20H0z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%20d%3D%22M3%203h14a2%202%200%200%201%202%202v10a2%202%200%200%201-2%202H3a2%202%200%200%201-2-2V5a2%202%200%200%201%202-2z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20stroke%3D%22%23ffffff%22%20stroke-width%3D%221.5%22%20d%3D%22M16.074%207.064l-6.01%204.01-6.01-4.01%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A)"></jdiv><jdiv class="hoverArea__bm8Bn"><jdiv class="menu__Ab04F __bottom__l3dG8"></jdiv></jdiv><jdiv class="text__LApPJ contentTransitionWrap__WnIa9 __bottom__FqEak __isOffline__ic4OB">Envie-nos uma mensagem</jdiv><jdiv class="container__ggcRm"><jdiv class="logo__J3V47"><jdiv class="icon__l6vlX" style="background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22108%22%20height%3D%2236%22%20viewBox%3D%220%200%20108%2036%22%3E%0A%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%23ffffff%22%20fill-rule%3D%22evenodd%22%20d%3D%22M6.342%2011.967H.957c-.2%200-.4%200-.6.2%200%20.2-.198.2-.198.4v1.993c0%20.2%200%20.4.198.6.2.198.4.198.6.198h2.79v14.36c0%201.397-1.196%202.594-2.392%202.594h-.4c-.2%200-.398%200-.598.2-.2.2-.2.398-.2.598v1.994c0%20.2%200%20.4.2.6.2.198.4.198.6.198h.198c3.192%200%205.785-2.792%205.785-5.984V12.566c0-.2%200-.4-.2-.6h-.398m6.98%200H11.33c-.2%200-.2%200-.4.2s-.2.2-.2.4v14.76c0%20.2%200%20.398.2.598.2.2.4.2.598.2h1.795c.2%200%20.4%200%20.598-.2.2-.2.2-.4.2-.598v-14.76c0-.2%200-.4-.198-.6h-.6m17.154%200H28.88c-.598%200-.997.2-.997.4l-4.388%209.973-4.188-9.974c0-.4-.4-.4-.6-.4h-1.993c-.4%200-.598%200-.598.2-.2.2-.2.4%200%20.6l6.78%2015.357c.2.2.4.4.6.4h.2c.198%200%20.597-.2.597-.4l6.782-15.358c.2-.2.2-.4%200-.598-.2-.2-.4-.2-.6-.2m9.176-.4c-2.193.002-3.988.8-5.584%202.594-1.595%201.597-2.393%203.592-2.393%205.985%200%202.393.798%204.388%202.393%205.984%201.596%201.794%203.39%202.592%205.585%202.592s3.99-.798%205.586-2.593c1.596-1.796%202.394-3.79%202.394-5.985%200-2.393-.798-4.388-2.394-5.984-1.596-1.794-3.59-2.591-5.585-2.591m3.193%2012.165c-.798.998-1.995%201.596-3.192%201.596-1.395%200-2.392-.398-3.39-1.395-.797-.998-1.396-2.194-1.396-3.79%200-1.396.4-2.792%201.397-3.59.798-.997%201.995-1.396%203.39-1.396%201.398%200%202.395.398%203.193%201.395.797.997%201.396%202.194%201.396%203.59s-.6%202.593-1.397%203.59m19.147-.598c-.398-.4-.797-.2-.997%200l-.4.4-.597.597c-.2.2-.4.2-.6.4-.198.2-.597.398-.796.398-.4%200-.6.2-.998.2-1.396%200-2.393-.6-3.19-1.596-.8-.998-1.397-2.194-1.397-3.79%200-1.396.4-2.792%201.396-3.79.998-.997%201.996-1.396%203.392-1.396%201.197%200%202.194.6%203.19%201.596.4.4.8.4.998.2l1.197-1.197s0-.4-.4-.8c-1.395-1.794-3.39-2.79-5.584-2.79-2.194-.002-3.99.796-5.584%202.59-1.597%201.597-2.395%203.592-2.395%205.985%200%202.393.798%204.388%202.394%206.183%201.594%201.596%203.39%202.394%205.583%202.394%202.593%200%204.588-1.197%205.984-3.39.2-.4.2-.8-.2-1.198l-.997-.997m11.57-11.569c-1.597%200-2.993.6-4.59%201.796V4.986c0-.2%200-.4-.198-.598-.2-.2-.4-.2-.6-.2H66.38c-.2%200-.398%200-.598.2-.2.2-.2.4-.2.598v22.54c0%20.198%200%20.398.2.597.2.2.4.2.598.2h1.796c.598%200%20.797-.2.797-.798V17.353c.2-.6.8-.998%201.398-1.596.797-.598%201.795-.798%202.792-.798.997%200%201.795.398%202.393%201.196.6.798.798%201.795.798%203.19v8.378c0%20.2%200%20.4.2.6.2.198.4.198.6.198h1.794c.2%200%20.4%200%20.6-.2.198-.2.198-.398.198-.598v-8.177c-.2-5.386-2.194-7.979-6.183-7.979m20.144%201.995c-.4-.798-.997-1.197-1.596-1.596-.798-.4-1.795-.598-2.992-.598-1.994%200-3.79.398-5.385.996-.398.2-.597.4-.597.998l.4%201.396c.198.598.398.798.796.598a12.823%2012.823%200%200%201%204.388-.798c.997%200%201.595.2%201.994.798.4.598.598%201.596.4%202.793l-.4-.2c-.2%200-.598-.198-1.197-.198-.4.2-.797.2-1.396.2-1.995%200-3.392.398-4.588%201.395-1.197.997-1.596%202.194-1.596%203.79s.4%202.992%201.396%203.99c.998.996%202.194%201.395%203.59%201.395%201.796%200%203.39-.598%204.787-1.994l.398%201.196c.2.4.4.6.6.6h1.195c.2%200%20.4%200%20.6-.2.198-.2.198-.4.198-.6V18.75c0-1.198%200-2.195-.198-2.993-.2-.598-.4-1.396-.798-2.194M91.31%2023.735c-.2.4-.797.998-1.396%201.396-.798.4-1.396.6-2.194.6s-1.396-.2-1.795-.798c-.4-.4-.598-1.197-.598-1.795%200-.798.2-1.396.798-1.995.598-.4%201.396-.797%202.393-.797.598%200%201.197%200%201.795.2.6.198.997.198.997.398v2.792m16.555%202.793l-.598-1.596c-.2-.4-.4-.598-.997-.4a3.834%203.834%200%200%201-2.394.8c-.4%200-.798-.2-.997-.4-.2-.2-.4-.598-.4-1.396V14.96h4.19c.198%200%20.397%200%20.597-.2.2-.2.2-.4.2-.6v-1.594c0-.2%200-.4-.2-.6h-4.788V7.38c0-.2%200-.4-.2-.598-.2-.2-.398-.2-.598-.2h-1.994c-.2%200-.4%200-.6.2-.198.2-.198.398-.198.598v4.587h-1.795c-.4%200-.798.2-.798.798v1.396c0%20.2%200%20.4.2.6.2.2.398.2.598.2h1.795v8.975c0%201.595.2%202.792.798%203.59.598.798%201.595%201.197%202.99%201.197.8%200%201.597-.2%202.395-.4s1.396-.598%201.795-.797c.997-.2%201.197-.598.997-.997z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%2362666c%22%20fill-rule%3D%22evenodd%22%20d%3D%22M6.94%2010.77C6.543.4.16%200%20.16%200c-.4%209.374%206.78%2010.77%206.78%2010.77z%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A)"></jdiv></jdiv><jdiv class="tooltipWrapper__WTPdq"><jdiv class="tooltip__whrX6"><a class="link__aMOhV" href="#" rel="nofollow noopener noreferrer">Chat desenvolvido por <jdiv class="icon__l6vlX" style="background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22108%22%20height%3D%2236%22%20viewBox%3D%220%200%20108%2036%22%3E%0A%20%20%20%20%3Cg%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%23ffffff%22%20fill-rule%3D%22evenodd%22%20d%3D%22M6.342%2011.967H.957c-.2%200-.4%200-.6.2%200%20.2-.198.2-.198.4v1.993c0%20.2%200%20.4.198.6.2.198.4.198.6.198h2.79v14.36c0%201.397-1.196%202.594-2.392%202.594h-.4c-.2%200-.398%200-.598.2-.2.2-.2.398-.2.598v1.994c0%20.2%200%20.4.2.6.2.198.4.198.6.198h.198c3.192%200%205.785-2.792%205.785-5.984V12.566c0-.2%200-.4-.2-.6h-.398m6.98%200H11.33c-.2%200-.2%200-.4.2s-.2.2-.2.4v14.76c0%20.2%200%20.398.2.598.2.2.4.2.598.2h1.795c.2%200%20.4%200%20.598-.2.2-.2.2-.4.2-.598v-14.76c0-.2%200-.4-.198-.6h-.6m17.154%200H28.88c-.598%200-.997.2-.997.4l-4.388%209.973-4.188-9.974c0-.4-.4-.4-.6-.4h-1.993c-.4%200-.598%200-.598.2-.2.2-.2.4%200%20.6l6.78%2015.357c.2.2.4.4.6.4h.2c.198%200%20.597-.2.597-.4l6.782-15.358c.2-.2.2-.4%200-.598-.2-.2-.4-.2-.6-.2m9.176-.4c-2.193.002-3.988.8-5.584%202.594-1.595%201.597-2.393%203.592-2.393%205.985%200%202.393.798%204.388%202.393%205.984%201.596%201.794%203.39%202.592%205.585%202.592s3.99-.798%205.586-2.593c1.596-1.796%202.394-3.79%202.394-5.985%200-2.393-.798-4.388-2.394-5.984-1.596-1.794-3.59-2.591-5.585-2.591m3.193%2012.165c-.798.998-1.995%201.596-3.192%201.596-1.395%200-2.392-.398-3.39-1.395-.797-.998-1.396-2.194-1.396-3.79%200-1.396.4-2.792%201.397-3.59.798-.997%201.995-1.396%203.39-1.396%201.398%200%202.395.398%203.193%201.395.797.997%201.396%202.194%201.396%203.59s-.6%202.593-1.397%203.59m19.147-.598c-.398-.4-.797-.2-.997%200l-.4.4-.597.597c-.2.2-.4.2-.6.4-.198.2-.597.398-.796.398-.4%200-.6.2-.998.2-1.396%200-2.393-.6-3.19-1.596-.8-.998-1.397-2.194-1.397-3.79%200-1.396.4-2.792%201.396-3.79.998-.997%201.996-1.396%203.392-1.396%201.197%200%202.194.6%203.19%201.596.4.4.8.4.998.2l1.197-1.197s0-.4-.4-.8c-1.395-1.794-3.39-2.79-5.584-2.79-2.194-.002-3.99.796-5.584%202.59-1.597%201.597-2.395%203.592-2.395%205.985%200%202.393.798%204.388%202.394%206.183%201.594%201.596%203.39%202.394%205.583%202.394%202.593%200%204.588-1.197%205.984-3.39.2-.4.2-.8-.2-1.198l-.997-.997m11.57-11.569c-1.597%200-2.993.6-4.59%201.796V4.986c0-.2%200-.4-.198-.598-.2-.2-.4-.2-.6-.2H66.38c-.2%200-.398%200-.598.2-.2.2-.2.4-.2.598v22.54c0%20.198%200%20.398.2.597.2.2.4.2.598.2h1.796c.598%200%20.797-.2.797-.798V17.353c.2-.6.8-.998%201.398-1.596.797-.598%201.795-.798%202.792-.798.997%200%201.795.398%202.393%201.196.6.798.798%201.795.798%203.19v8.378c0%20.2%200%20.4.2.6.2.198.4.198.6.198h1.794c.2%200%20.4%200%20.6-.2.198-.2.198-.398.198-.598v-8.177c-.2-5.386-2.194-7.979-6.183-7.979m20.144%201.995c-.4-.798-.997-1.197-1.596-1.596-.798-.4-1.795-.598-2.992-.598-1.994%200-3.79.398-5.385.996-.398.2-.597.4-.597.998l.4%201.396c.198.598.398.798.796.598a12.823%2012.823%200%200%201%204.388-.798c.997%200%201.595.2%201.994.798.4.598.598%201.596.4%202.793l-.4-.2c-.2%200-.598-.198-1.197-.198-.4.2-.797.2-1.396.2-1.995%200-3.392.398-4.588%201.395-1.197.997-1.596%202.194-1.596%203.79s.4%202.992%201.396%203.99c.998.996%202.194%201.395%203.59%201.395%201.796%200%203.39-.598%204.787-1.994l.398%201.196c.2.4.4.6.6.6h1.195c.2%200%20.4%200%20.6-.2.198-.2.198-.4.198-.6V18.75c0-1.198%200-2.195-.198-2.993-.2-.598-.4-1.396-.798-2.194M91.31%2023.735c-.2.4-.797.998-1.396%201.396-.798.4-1.396.6-2.194.6s-1.396-.2-1.795-.798c-.4-.4-.598-1.197-.598-1.795%200-.798.2-1.396.798-1.995.598-.4%201.396-.797%202.393-.797.598%200%201.197%200%201.795.2.6.198.997.198.997.398v2.792m16.555%202.793l-.598-1.596c-.2-.4-.4-.598-.997-.4a3.834%203.834%200%200%201-2.394.8c-.4%200-.798-.2-.997-.4-.2-.2-.4-.598-.4-1.396V14.96h4.19c.198%200%20.397%200%20.597-.2.2-.2.2-.4.2-.6v-1.594c0-.2%200-.4-.2-.6h-4.788V7.38c0-.2%200-.4-.2-.598-.2-.2-.398-.2-.598-.2h-1.994c-.2%200-.4%200-.6.2-.198.2-.198.398-.198.598v4.587h-1.795c-.4%200-.798.2-.798.798v1.396c0%20.2%200%20.4.2.6.2.2.398.2.598.2h1.795v8.975c0%201.595.2%202.792.798%203.59.598.798%201.595%201.197%202.99%201.197.8%200%201.597-.2%202.395-.4s1.396-.598%201.795-.797c.997-.2%201.197-.598.997-.997z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%2362666c%22%20fill-rule%3D%22evenodd%22%20d%3D%22M6.94%2010.77C6.543.4.16%200%20.16%200c-.4%209.374%206.78%2010.77%206.78%2010.77z%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A)"></jdiv></a></jdiv></jdiv></jdiv><jdiv class="leaf__J7xKT"><jdiv class="leaf__puLzs _bottom__U7RDr"><jdiv class="cssLeaf__HKICE" style="background-image:url(data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2240%22%20viewBox%3D%220%200%2032%2040%22%3E%0A%20%20%20%20%3Cg%20fill%3D%22none%22%20fill-rule%3D%22evenodd%22%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%23424867%22%20d%3D%22M0%200h9.02L32%2033.196V40H0z%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%23424867%22%20d%3D%22M9%200c3.581.05%2023%205.426%2023%2033.08v.03C18.922%2030.751%209%2019.311%209%205.554V0z%22%20fill-opacity%3D%221%22%2F%3E%0A%20%20%20%20%20%20%20%20%3Cpath%20fill%3D%22%235e5f61%22%20d%3D%22M9%200c3.581.05%2023%205.426%2023%2033.08v.03C18.922%2030.751%209%2019.311%209%205.554V0z%22%20fill-opacity%3D%220.7%22%2F%3E%0A%20%20%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A)"></jdiv></jdiv></jdiv></jdiv></jdiv><jdiv class="player__mJcAM sf-hidden" id="jivo-player"><audio class="sf-hidden" id="jivo-sound-agent_message" preload="auto"><source type="audio/mpeg"><source type="audio/ogg; codecs=vorbis"><source type="audio/wav"/></source></source></audio><audio class="sf-hidden" id="jivo-sound-notification" preload="auto"><source type="audio/mpeg"><source type="audio/ogg; codecs=vorbis"><source type="audio/wav"/></source></source></audio><audio class="sf-hidden" id="jivo-sound-outgoing_message" preload="auto"><source type="audio/mpeg"><source type="audio/ogg; codecs=vorbis"><source type="audio/wav"/></source></source></audio></jdiv><jdiv class="notranslate" id="jcont" style="animation-duration:300ms;animation-timing-function:cubic-bezier(0.39,0.24,0.21,0.99);animation-delay:0s;animation-iteration-count:1;animation-direction:normal;animation-fill-mode:both;animation-play-state:running;animation-name:WidgetContainer_CLOSE_WIDGET__ztMPr;--jright:30px;--jheight:496px;display:block;position:fixed;--jlabelwidth:317px;--jlabelright:40px" translate="no"><jdiv class="wrap__OZMwy sf-hidden" dir="ltr" id="jivo_action"></jdiv></jdiv><jdiv class="jv-pseudo-height"></jdiv><jdiv class="jv-mouse-track sf-hidden"></jdiv></jdiv></jdiv>
