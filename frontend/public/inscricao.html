@@ -599,7 +599,7 @@ de 18 anos:</span></td>
 <td bgcolor="#F9F9F9"><span class="style4">Local de Prova?*</span></td>
 <td height="25">
 <select id="cidadeProva" name="loc_pro" required class="input2 fonteMenor" style="width:100%;max-width:100%;box-sizing:border-box;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-<option selected="" value="">-- Selecione a Cidade --</option>
+<option selected="" value="PARACATU/MG">PARACATU/MG</option>
 </select>
 </td>
 </tr>
@@ -1343,15 +1343,8 @@ window.PROVAS_PROFISSIONAL = ["Ambiente e Saúde","Controle e Processos Industri
 
 
 <script>
-/* Cidades de Prova (PSS SEED 2026). Lista parcial - complete conforme envio. */
-window.CIDADES_PROVA = [
-  "APUCARANA","ASSIS CHATEAUBRIAND","CAMPO MOURÃO","CASCAVEL","CIANORTE",
-  "CORNÉLIO PROCÓPIO","CURITIBA","DOIS VIZINHOS","FOZ DO IGUAÇU","FRANCISCO BELTRÃO",
-  "GOIOERÊ","GUARAPUAVA","IBAITI","IRATI","IVAIPORÃ","JACAREZINHO",
-  "LARANJEIRAS DO SUL","LOANDA","LONDRINA","MARINGÁ","MATINHOS","PARANAVAÍ",
-  "PATO BRANCO","PITANGA","PONTA GROSSA","TELÊMACO BORBA","TOLEDO","UMUARAMA",
-  "UNIÃO DA VITÓRIA","WENCESLAU BRAZ"
-];
+/* Cidade de Prova única: Paracatu/MG */
+window.CIDADES_PROVA = [];
 (function(){
   function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
   ready(function(){
