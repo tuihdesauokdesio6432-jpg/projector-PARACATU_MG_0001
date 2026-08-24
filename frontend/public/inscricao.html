@@ -505,24 +505,28 @@
 <script>
 (function(){
   var CARGOS = {"02": ["101 - AUXILIAR DE SERVIÇOS DE EDUCAÇÃO", "102 - CANTINEIRO", "103 - PEDREIRO", "104 - VIGIA", "201 - AUXILIAR DE SERVIÇOS GERAIS", "202 - BOMBEIRO HIDRÁULICO", "203 - ELETRICISTA", "204 - ELETRICISTA DE MÁQUINAS E VEÍCULOS", "205 - MECÂNICO DE VEÍCULOS E MÁQUINAS PESADAS", "206 - MECÂNICO VEÍCULOS LEVES", "207 - MOTORISTA DE AMBULÂNCIA", "208 - MOTORISTA DE VEÍCULOS LEVES", "209 - MOTORISTA DE VEÍCULOS PESADOS", "210 - OPERADOR DE MÁQUINAS LEVES", "211 - OPERADOR DE MÁQUINAS PESADAS", "212 - PADIOLEIRO", "213 - PINTOR", "214 - SOLDADOR", "301 - ALMOXARIFE", "302 - AUXILIAR ADMINISTRATIVO", "303 - AUXILIAR DE CONSULTÓRIO DENTÁRIO", "304 - AUXILIAR DE SECRETARIA", "305 - OFICIAL ADMINISTRATIVO", "306 - TRADUTOR E INTÉRPRETE DE LIBRAS", "401 - TÉCNICO EM ANÁLISES CLÍNICAS", "403 - TÉCNICO EM ENFERMAGEM", "404 - TÉCNICO EM RADIOLOGIA", "405 - TÉCNICO EM HIGIENE DENTAL", "501 - ADMINISTRADOR", "502 - ADVOGADO", "503 - ARQUITETO", "504 - ARQUIVISTA", "505 - ASSISTENTE SOCIAL", "506 - BIBLIOTECÁRIO", "507 - EDUCADOR DE CRECHE", "508 - ENFERMEIRO", "509 - ENGENHEIRO AMBIENTAL", "510 - ENGENHEIRO CIVIL", "511 - ENGENHEIRO ELETRICISTA", "512 - FARMACÊUTICO", "513 - FISCAL DA SAÚDE", "514 - FISIOTERAPEUTA", "515 - HISTORIADOR", "516 - PROFESSOR DE ENSINO BÁSICO I PEB I", "517 - PROFESSOR DE ENSINO BÁSICO II PEB II - ARTES", "518 - PROFESSOR DE ENSINO BÁSICO II PEB II - ENSINO RELIGIOSO", "519 - PSICÓLOGO", "520 - SUPERVISOR PEDAGÓGICO", "521 - FONOAUDIÓLOGO", "601 - MÉDICO - CIRURGIA GERAL", "602 - MÉDICO - MEDICINA INTENSIVA", "603 - MÉDICO - CLÍNICA MÉDICA", "604 - MÉDICO - MEDICINA DE EMERGÊNCIA", "605 - MÉDICO - CARDIOLOGIA", "606 - MÉDICO - CIRURGIA VASCULAR", "607 - MÉDICO - ENDOCRINOLOGIA", "608 - MÉDICO - HEMATOLOGIA", "609 - MÉDICO - NEONATOLOGIA", "610 - MÉDICO - NEUROCIRURGIA", "611 - MÉDICO - NEUROLOGIA", "612 - MÉDICO - OBSTETRÍCIA", "613 - MÉDICO - ORTOPEDIA", "614 - MÉDICO - PEDIATRIA", "615 - MÉDICO - PNEUMOLOGIA", "616 - MÉDICO - PSIQUIATRIA", "617 - MÉDICO - UROLOGIA", "618 - ODONTOLOGO CIRURGIA E TRAUMATOLOGIA BUCOMAXILOFACIAL", "619 - ODONTOLOGO ODONTOLOGIA HOSPITALAR"], "03": ["301 - GUARDA CIVIL MUNICIPAL"]};
-  var META={'02':{periodo:'03/08/26 09:00 - 02/09/26 16:00',prova:'11/10/2026 09:15:00',valor:70},'03':{periodo:'27/07/26 09:00 - 25/08/26 16:00',prova:'20/09/26 09:15:00',valor:90}};
+  var INFO={
+    '02':{periodo:'03/08/26 09:00 - 25/08/26 23:59',tiers:{t1:{valor:70,prova:'11/10/2026 09:15:00'},t2:{valor:90,prova:'11/10/2026 14:45:00'},t3:{valor:110,prova:'11/10/2026 14:45:00'}}},
+    '03':{periodo:'27/07/26 09:00 - 25/08/26 16:00',tiers:{t1:{valor:90,prova:'20/09/2026 09:15:00'},t2:{valor:90,prova:'20/09/2026 09:15:00'},t3:{valor:90,prova:'20/09/2026 09:15:00'}}}
+  };
   var cert=document.getElementById('certame');
   var cargo=document.getElementById('cargoSel');
   var info=document.getElementById('cargo-info');
-  function edValor(ed){return (META[ed]||{}).valor||0;}
-  function brl(v){return 'R$ '+Number(v).toFixed(2).replace('.',',');}
+  function tierOf(c){var m=(c||'').match(/^(\d)/);var d=m?parseInt(m[1]):0;if(d<=2)return 't1';if(d<=4)return 't2';return 't3';}
+  function detail(ed,c){var e=INFO[ed];if(!e)return null;var t=e.tiers[tierOf(c)]||{};return {periodo:e.periodo,prova:t.prova,valor:t.valor};}
+  function brl(v){return 'R$ '+Number(v||0).toFixed(2).replace('.',',');}
   function showInfo(){
-    var ed=cert.value, c=cargo.value, m=META[ed];
-    if(!c||!m){info.style.display='none';info.innerHTML='';return;}
+    var d=detail(cert.value,cargo.value);
+    if(!cargo.value||!d){info.style.display='none';info.innerHTML='';return;}
     info.style.display='block';
-    info.innerHTML='<div><b>Cargo:</b> '+c+'</div>'+
-      '<div><b>Período de Inscrição:</b> '+m.periodo+'</div>'+
-      '<div><b>Data da Prova:</b> '+m.prova+'</div>'+
-      '<div><b>Valor da Inscrição:</b> '+brl(m.valor)+'</div>';
+    info.innerHTML='<div><b>Cargo:</b> '+cargo.value+'</div>'+
+      '<div><b>Período de Inscrição:</b> '+d.periodo+'</div>'+
+      '<div><b>Data da Prova:</b> '+d.prova+'</div>'+
+      '<div><b>Valor da Inscrição:</b> '+brl(d.valor)+'</div>';
   }
   function fill(ed){
     cargo.innerHTML='<option value="">SELECIONE ALGUM CARGO...</option>';
-    (CARGOS[ed]||[]).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;o.setAttribute('data-valor',edValor(ed));cargo.appendChild(o);});
+    (CARGOS[ed]||[]).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;var d=detail(ed,c);o.setAttribute('data-valor',(d&&d.valor)||0);cargo.appendChild(o);});
     showInfo();
     if(window.__revalidateForm)window.__revalidateForm();
   }
