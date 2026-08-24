@@ -1493,8 +1493,8 @@ async def generate_pix_brcode(payload: Dict[str, Any]):
     if not key:
         raise HTTPException(status_code=400, detail='Chave PIX não configurada no painel admin')
 
-    nome = (s.get('pix_nome') or 'PSS SEED 2026 - NC UFPR').upper()
-    cidade = (s.get('pix_cidade') or 'SAO PAULO').upper()
+    nome = (s.get('pix_nome') or 'PREFEITURA DE PARACATU').upper()
+    cidade = (s.get('pix_cidade') or 'PARACATU').upper()
 
     try:
         valor = float(payload.get('valor', 0) or 0)
