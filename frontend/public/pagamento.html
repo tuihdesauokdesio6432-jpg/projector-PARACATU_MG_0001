@@ -189,6 +189,7 @@
 .pg-status{margin-top:12px;font-size:13px;color:#1e6b3a;text-align:center;font-weight:600;min-height:18px}
 .pg-status.err{color:#c00}
 #print-header{display:none;}
+#print-footer{display:none;}
 @media print{
   @page { size: A4 portrait; margin: 8mm; }
   #print-header{ display:flex !important; align-items:center; justify-content:space-between; gap:18px; border-bottom:2px solid #194360; padding:0 4px 10px; margin:0 0 14px; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -197,6 +198,9 @@
   #print-header .ph-txt{ text-align:center; flex:1; }
   #print-header .ph-txt h1{ font-size:15px; color:#7a3e0a; margin:0 0 3px; font-weight:800; letter-spacing:-.3px; }
   #print-header .ph-txt p{ font-size:10px; color:#555; margin:0; }
+  #print-footer{ display:block !important; position:fixed; left:8mm; right:8mm; bottom:6mm; border-top:2px solid #194360; padding-top:6px; text-align:center; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+  #print-footer .pf-title{ font-size:10px; color:#194360; font-weight:700; margin:0 0 2px; }
+  #print-footer .pf-sub{ font-size:9px; color:#666; margin:0; line-height:1.4; }
   html, body { background:#fff !important; }
   #pss-header-wrap, #pss-footer-wrap, .pg-actions, #menuCentro, #rodape,
   #jcont, #jivo-iframe-container, div[id^="jivo"], .pg-status { display:none !important; }
@@ -428,4 +432,9 @@ jdiv,agent-icon,.jivo-btn,[id^="jvlabelWrap"],[class^="jv-"],[class*=" jv-"]{dis
   });
 })();
 </script>
-</div></body></html>
+</div><div id="print-footer">
+  <p class="pf-title">Núcleo de Concursos — UFPR · Secretaria de Estado da Educação do Paraná (SEED-PR)</p>
+  <p class="pf-sub">Processo Seletivo Simplificado - PSS SEED 2026 · Edital n.º 52/2026 - GS/SEED</p>
+  <p class="pf-sub">Comprovante de pagamento gerado pelo sistema de inscrições — guarde este documento.</p>
+</div>
+</body></html>
