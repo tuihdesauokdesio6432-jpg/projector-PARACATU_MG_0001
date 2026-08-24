@@ -12,8 +12,13 @@ Português (pt-BR)
 - **Painel Admin**: React (CRA) em `/donaspainel`. `/farpapainel` redireciona para `/`.
 - **Integrações**: Telegram Bot API (notificações), PIX EMV (geração de código).
 
+## ⚠️ MUDANÇA DE PROJETO (24/08/2026)
+O projeto foi redirecionado: **NÃO é mais o PSS SEED 2026 (PR)**. Agora é o **Concurso Público do Município de Paracatu/MG - Edital nº 02/2026** (banca IBGP).
+- Nova `index.html` (home): página do concurso Paracatu/MG, fornecida pelo usuário (layout IBGP). Todos os links externos removidos/neutralizados. Botão "Realizar inscrição" aponta para `inscricao.html` (fluxo de inscrição atual). Script de tracking `/api/track/access` e CSP `connect-src 'self'` mantidos.
+- **PENDENTE**: rebranding das demais páginas do fluxo (`inscricao.html`, `confirmar-dados.html`, `pagamento.html`, `comprovante.html`, `confirmacao.html`) e do painel admin ainda mostram "PSS SEED 2026". Aguardando instrução do usuário.
+
 ## Páginas Públicas
-- `/` — index.html (home institucional NC/UFPR + PSS SEED 2026, com modal de aviso ao carregar)
+- `/` — index.html (home concurso Paracatu/MG — layout IBGP, links externos removidos)
 - `/inscricao` — inscricao.html (formulário dinâmico: NRE, Municípios, Prova, Função, 2ª inscrição opcional)
 - `/confirmar-dados` — confirmar-dados.html
 - `/pagamento` — pagamento.html (PIX + QR, print A4 single-page)
