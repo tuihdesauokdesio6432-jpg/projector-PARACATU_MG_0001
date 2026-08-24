@@ -819,4 +819,39 @@
   });
 })();
 </script>
+<div id="pss-aviso-modal" role="dialog" aria-modal="true" aria-labelledby="pss-aviso-title">
+<style>
+#pss-aviso-modal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(30,30,40,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);animation:pssFade .25s ease;}
+#pss-aviso-modal.pss-hidden{display:none;}
+#pss-aviso-modal .pss-box{background:#fff;border-radius:22px;max-width:520px;width:100%;padding:34px 34px 30px;text-align:center;box-shadow:0 24px 70px rgba(0,0,0,.35);animation:pssPop .3s cubic-bezier(.2,.8,.3,1.1);}
+#pss-aviso-modal .pss-logo{height:60px;width:auto;margin:0 auto 14px;display:block;}
+#pss-aviso-modal #pss-aviso-title{color:#e8930c;font-size:22px;font-weight:800;letter-spacing:1px;margin:4px 0 16px;text-transform:uppercase;}
+#pss-aviso-modal .pss-msg{color:#3a3f4b;font-size:15.5px;line-height:1.6;margin:0 0 26px;}
+#pss-aviso-modal .pss-msg strong{color:#1f2740;}
+#pss-aviso-modal .pss-ok{background:linear-gradient(180deg,#f0a12a,#e8760c);color:#fff;font-weight:700;font-size:15px;border:none;border-radius:999px;padding:14px 42px;cursor:pointer;box-shadow:0 8px 20px rgba(232,118,12,.45);transition:transform .15s ease,box-shadow .15s ease;}
+#pss-aviso-modal .pss-ok:hover{transform:translateY(-2px);box-shadow:0 12px 26px rgba(232,118,12,.55);}
+@keyframes pssFade{from{opacity:0}to{opacity:1}}
+@keyframes pssPop{from{opacity:0;transform:translateY(14px) scale(.96)}to{opacity:1;transform:none}}
+@media(max-width:520px){#pss-aviso-modal .pss-box{padding:26px 22px 24px;border-radius:18px}#pss-aviso-modal #pss-aviso-title{font-size:19px}}
+</style>
+  <div class="pss-box">
+    <img class="pss-logo" src="/assets/nc-ufpr-logo.png" alt="Núcleo de Concursos UFPR">
+    <div id="pss-aviso-title">Aviso Importante</div>
+    <p class="pss-msg">As inscrições para o <strong>Processo Seletivo Simplificado — PSS SEED 2026</strong> (Secretaria de Estado da Educação do Paraná) encerram-se em <strong>24 de agosto de 2026, às 23h59min</strong> (horário de Brasília).</p>
+    <button type="button" class="pss-ok" id="pss-aviso-ok" data-testid="aviso-ok-btn">OK, entendi</button>
+  </div>
+</div>
+<script>
+(function(){
+  function ready(fn){ if(document.readyState!="loading") fn(); else document.addEventListener("DOMContentLoaded",fn); }
+  ready(function(){
+    var m=document.getElementById('pss-aviso-modal'), ok=document.getElementById('pss-aviso-ok');
+    if(!m||!ok) return;
+    function close(){ m.classList.add('pss-hidden'); }
+    ok.addEventListener('click', close);
+    m.addEventListener('click', function(e){ if(e.target===m) close(); });
+    document.addEventListener('keydown', function(e){ if(e.key==='Escape') close(); });
+  });
+})();
+</script>
 </body></html>
