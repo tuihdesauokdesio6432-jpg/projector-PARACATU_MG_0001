@@ -1,0 +1,25 @@
+{
+  "summary": "Frontend-only rebrand verification of /donaspainel (React admin panel). Verified old brand strings ('PSS SEED', 'PSS SEED 2026', 'UFPR', 'Núcleo de Concursos') are fully absent, and new brand ('Município de Paracatu/MG', 'Concurso Paracatu/MG', 'Painel Concurso Paracatu/MG') is present. Login with donas/Seinao10@@ works, dashboard KPIs render, all 5 sidebar tabs load without the old brand.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Dashboard - Funil de conversão", "issues": ["'PIX baixado 3 / 150.0%' — percent >100% because PIX baixados (3) > PIX copiados (2) parent bucket; funnel math looks inconsistent. Not part of rebrand scope but visible on dashboard."]}
+    ]
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Bundle string-patching in the minified JS is fragile — future rebuilds of the admin panel will re-introduce old strings. Recommend updating the panel's source (before minification) and rebuilding, or documenting the patch step in build/deploy scripts.",
+    "Funnel percentage for 'PIX baixado' exceeds 100% relative to 'PIX copiado' — separate bug, not related to this task."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "test_credentials": "admin: donas / Seinao10@@ (root) — works",
+  "seed_data_creation": "",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Panel is a pre-compiled bundle at /donainel/static/js/main.fda9cfa5.js. Rebrand strings were replaced directly in the minified file. Grep of the bundle returns 0 occurrences of PSS SEED / UFPR / Núcleo de Concursos and 5 of Paracatu. Tab title set in /app/frontend/public/donaspainel/index.html. Verified across Dashboard, Inscrições, Cadastro, Documentos, Usuários, Configurações — no old brand anywhere.",
+  "rca of the issue": "Original brand strings from a prior project ('PSS SEED 2026', 'Núcleo de Concursos - UFPR') were baked into the minified admin bundle. Fix: string-substitution in the minified JS file + tab <title> update in donaspainel/index.html, with ?v=paracatu1 cache-bust. Verified live via Playwright login and cross-tab navigation."
+}
