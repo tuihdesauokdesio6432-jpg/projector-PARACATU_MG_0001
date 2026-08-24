@@ -189,12 +189,25 @@
 .pg-status{margin-top:12px;font-size:13px;color:#1e6b3a;text-align:center;font-weight:600;min-height:18px}
 .pg-status.err{color:#c00}
 @media print{
-  .pg-card > header{background:#194360!important;-webkit-print-color-adjust:exact}
-  #menuCentro,#rodape,.pg-actions{display:none !important}
-  #topo, #topoCentro { display:block !important; width:100% !important; max-width:100% !important; height:auto !important; padding:0 !important; margin:0 0 12px 0 !important; background:none !important; text-align:center !important; }
-  #topoCentro img { display:block !important; margin:0 auto !important; max-width:100% !important; height:auto !important; }
-  body { background:#fff !important; }
-  .pg-card { box-shadow:none !important; border:1px solid #ddd !important; }
+  @page { size: A4 portrait; margin: 8mm; }
+  html, body { background:#fff !important; }
+  #pss-header-wrap, #pss-footer-wrap, .pg-actions, #menuCentro, #rodape,
+  #jcont, #jivo-iframe-container, div[id^="jivo"], .pg-status { display:none !important; }
+  .pg-card { box-shadow:none !important; border:1px solid #ccc !important; margin:0 !important; }
+  .pg-card > header { background:#194360 !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; padding:10px 16px !important; }
+  .pg-card > header h2 { font-size:15px !important; margin:0 !important; }
+  .pg-card > header p { font-size:10px !important; margin:2px 0 0 !important; }
+  .pg-body { padding:12px 16px !important; }
+  .pg-grid { gap:14px !important; }
+  .pg-info dt { font-size:9px !important; margin:4px 0 1px !important; }
+  .pg-info dd { font-size:11px !important; margin:0 0 4px !important; }
+  .pg-valor-box { margin-top:10px !important; padding:8px 12px !important; }
+  .pg-valor-box .lbl { font-size:9px !important; }
+  .pg-valor-box .val { font-size:18px !important; }
+  .pg-qr-wrap { padding:8px !important; background:#fff !important; }
+  #pg-qr, #pg-qr img, #pg-qr canvas { width:180px !important; height:180px !important; }
+  .pg-pix-label { font-size:9px !important; margin-top:8px !important; }
+  .pg-pix-code { font-size:8px !important; word-break:break-all !important; padding:6px !important; }
 }
 </style>
 <div class="pg-card">
