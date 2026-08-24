@@ -1,0 +1,17 @@
+{
+  "summary": "Verified fix for Telegram notification title. Called _build_telegram_message directly with empty settings and with custom telegram_titulo. Also verified backend /api/ health endpoint.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "tests_performed": [
+    "TEST1: _build_telegram_message(insc, {}) => output starts with 'NOVA INSCRIÇÃO — PSS SEED 2026', does NOT contain 'FORQUILHA'. PASS",
+    "TEST2: _build_telegram_message(insc, {'telegram_titulo':'MEU TITULO'}) => output contains 'MEU TITULO'. PASS (fallback correctly only used when empty)",
+    "GET {REACT_APP_BACKEND_URL}/api/ => HTTP 200, body {\"message\":\"Painel Administrativo API\"}. PASS"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [],
+  "updated_files": [],
+  "success_rate": {"backend": "100%", "frontend": "N/A (skipped per request)"},
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Fix in /app/backend/admin_routes.py _build_telegram_message default title now 'NOVA INSCRIÇÃO — PSS SEED 2026' works correctly. No real Telegram send was triggered — function tested in isolation."
+}
