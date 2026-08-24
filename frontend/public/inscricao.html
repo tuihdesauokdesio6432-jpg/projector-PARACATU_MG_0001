@@ -489,121 +489,33 @@
 </fieldset>
 <fieldset>
 <legend>Seleção de Cargo</legend>
-<table border="0" cellpadding="3" cellspacing="5" width="500">
-<tbody><tr>
-<td bgcolor="#FFFFFF" colspan="4" id="aguarde"> </td>
-</tr>
-<tr>
-<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Núcleo Regional de Educação: <span style="color:#c00">*</span></td>
-</tr>
-<tr>
-<td colspan="4" id="nresel" width="67%">
-<select class="input2 fonteMenor" id="nre" name="nre" required style="width:860px">
-<option selected="" value="">Selecione</option>
-<option value="APUCARANA">APUCARANA</option>
-<option value="AREA METROP.NORTE">AREA METROP.NORTE</option>
-<option value="AREA METROP.SUL">AREA METROP.SUL</option>
-<option value="ASSIS CHATEAUBRIAND">ASSIS CHATEAUBRIAND</option>
-<option value="CAMPO MOURAO">CAMPO MOURAO</option>
-<option value="CASCAVEL">CASCAVEL</option>
-<option value="CIANORTE">CIANORTE</option>
-<option value="CORNELIO PROCOPIO">CORNELIO PROCOPIO</option>
-<option value="CURITIBA">CURITIBA</option>
-<option value="DOIS VIZINHOS">DOIS VIZINHOS</option>
-<option value="FOZ DO IGUACU">FOZ DO IGUACU</option>
-<option value="FRANCISCO BELTRAO">FRANCISCO BELTRAO</option>
-<option value="GOIOERE">GOIOERE</option>
-<option value="GUARAPUAVA">GUARAPUAVA</option>
-<option value="IBAITI">IBAITI</option>
-<option value="IRATI">IRATI</option>
-<option value="IVAIPORA">IVAIPORA</option>
-<option value="JACAREZINHO">JACAREZINHO</option>
-<option value="LARANJEIRAS DO SUL">LARANJEIRAS DO SUL</option>
-<option value="LOANDA">LOANDA</option>
-<option value="LONDRINA">LONDRINA</option>
-<option value="MARINGA">MARINGA</option>
-<option value="PARANAGUA">PARANAGUA</option>
-<option value="PARANAVAI">PARANAVAI</option>
-<option value="PATO BRANCO">PATO BRANCO</option>
-<option value="PITANGA">PITANGA</option>
-<option value="PONTA GROSSA">PONTA GROSSA</option>
-<option value="TELEMACO BORBA">TELEMACO BORBA</option>
-<option value="TOLEDO">TOLEDO</option>
-<option value="UMUARAMA">UMUARAMA</option>
-<option value="UNIAO DA VITORIA">UNIAO DA VITORIA</option>
-<option value="WENCESLAU BRAZ">WENCESLAU BRAZ</option>
-</select>
-</td>
-</tr>
-<tr>
-<td bgcolor="#F9F9F9" class="style4" colspan="4" height="22" width="33%">Municípios: <span style="color:#c00">*</span></td>
-</tr>
-<tr>
-<td colspan="4" id="municsel" width="67%">
-<div id="munic-empty" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
-<div id="munic-grid" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
-<div id="munic-help" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
-</td>
-</tr>
-<tr>
-<td colspan="4" width="100%" style="padding-top:6px;">
-<div style="display:flex;gap:18px;flex-wrap:wrap;margin:2px 0 6px;">
-  <div style="flex:1 1 320px;min-width:260px;">
-    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
-    <select id="prova" name="prova" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-      <option selected="" value="">Selecione</option>
-    </select>
-  </div>
-  <div style="flex:1 1 320px;min-width:260px;">
-    <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função <span style="color:#c00">*</span></div>
-    <select id="funcao" name="funcao" required class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
-      <option selected="" value="">Todas as funções</option>
-    </select>
-  </div>
+<div style="padding:12px 4px;max-width:920px;">
+  <div style="font-weight:700;color:#333;font-size:13px;margin-bottom:6px;">Certame: <span style="color:#c00">*</span></div>
+  <select id="certame" name="certame" required class="input2 fonteMenor" data-testid="select-certame" style="width:100%;padding:10px 12px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;margin-bottom:20px;">
+    <option value="">SELECIONE ALGUM CONCURSO...</option>
+    <option value="02">CONCURSO PÚBLICO DO MUNICÍPIO DE PARACATU/MG - EDITAL Nº 02/2026</option>
+    <option value="03">CONCURSO PÚBLICO DA GUARDA CIVIL MUNICIPAL DE PARACATU/MG - EDITAL Nº 03/2026</option>
+  </select>
+  <div style="font-weight:700;color:#333;font-size:13px;margin-bottom:6px;">CARGO: <span style="color:#c00">*</span></div>
+  <select id="cargoSel" name="cargoSel" required class="input2 fonteMenor" data-testid="select-cargo" style="width:100%;padding:10px 12px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
+    <option value="">SELECIONE ALGUM CARGO...</option>
+  </select>
 </div>
-</td>
-</tr>
-<tr>
-<td colspan="4" style="padding-top:12px;">
-  <label style="display:inline-flex;align-items:center;gap:8px;cursor:pointer;color:#333;font-size:14px;font-weight:600;">
-    <input type="checkbox" id="chk-insc2" name="chk-insc2"> Desejo fazer uma 2ª inscrição (opcional)
-  </label>
-</td>
-</tr>
-<tr id="insc2-wrap" style="display:none;">
-<td colspan="4">
-  <fieldset style="border:1px solid #e5e2dc;border-radius:10px;padding:6px 16px 16px;margin-top:6px;">
-    <legend style="font-weight:700;color:#333;font-size:14px;padding:0 6px;">2ª Inscrição</legend>
-    <div style="font-weight:600;color:#333;font-size:13px;margin:8px 0 5px;">Núcleo Regional de Educação: <span style="color:#c00">*</span></div>
-    <select id="nre2" name="nre2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-      <option selected="" value="">Selecione</option>
-    </select>
-    <div style="font-weight:600;color:#333;font-size:13px;margin:12px 0 5px;">Municípios: <span style="color:#c00">*</span></div>
-    <div id="munic-empty2" style="color:#8a7a66;font-size:13px;padding:6px 2px;">Selecione primeiro o Núcleo Regional de Educação.</div>
-    <div id="munic-grid2" style="display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;"></div>
-    <div id="munic-help2" style="display:none;color:#8a7a66;font-size:12px;margin-top:8px;">Selecione até dois municípios vinculados ao NRE escolhido.</div>
-    <div style="display:flex;gap:18px;flex-wrap:wrap;margin:14px 0 4px;">
-      <div style="flex:1 1 320px;min-width:260px;">
-        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;">Prova <span style="color:#c00">*</span></div>
-        <select id="prova2" name="prova2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#fff;">
-          <option selected="" value="">Selecione</option>
-        </select>
-      </div>
-      <div style="flex:1 1 320px;min-width:260px;">
-        <div style="color:#333;font-weight:700;font-size:13px;margin-bottom:5px;display:flex;align-items:center;gap:6px;"><svg width="15" height="15" viewBox="0 0 16 16" fill="#333" aria-hidden="true"><path d="M6.5 1A1.5 1.5 0 0 0 5 2.5V3H2.5A1.5 1.5 0 0 0 1 4.5v8A1.5 1.5 0 0 0 2.5 14h11a1.5 1.5 0 0 0 1.5-1.5v-8A1.5 1.5 0 0 0 13.5 3H11v-.5A1.5 1.5 0 0 0 9.5 1h-3zM6 2.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V3H6v-.5z"/></svg>Função</div>
-        <select id="funcao2" name="funcao2" class="input2 fonteMenor" style="width:100%;padding:9px 10px;border:1px solid #cfd6e6;border-radius:8px;background:#eef2fb;">
-          <option selected="" value="">Todas as funções</option>
-        </select>
-      </div>
-    </div>
-  </fieldset>
-</td>
-</tr>
-
-<tr>
-<td bgcolor="#FFFFFF" colspan="4" id="prop"> </td>
-</tr>
-</tbody></table>
+<script>
+(function(){
+  var CARGOS = {"02": ["101 - AUXILIAR DE SERVIÇOS DE EDUCAÇÃO", "102 - CANTINEIRO", "103 - PEDREIRO", "104 - VIGIA", "201 - AUXILIAR DE SERVIÇOS GERAIS", "202 - BOMBEIRO HIDRÁULICO", "203 - ELETRICISTA", "204 - ELETRICISTA DE MÁQUINAS E VEÍCULOS", "205 - MECÂNICO DE VEÍCULOS E MÁQUINAS PESADAS", "206 - MECÂNICO VEÍCULOS LEVES", "207 - MOTORISTA DE AMBULÂNCIA", "208 - MOTORISTA DE VEÍCULOS LEVES", "209 - MOTORISTA DE VEÍCULOS PESADOS", "210 - OPERADOR DE MÁQUINAS LEVES", "211 - OPERADOR DE MÁQUINAS PESADAS", "212 - PADIOLEIRO", "213 - PINTOR", "214 - SOLDADOR", "301 - ALMOXARIFE", "302 - AUXILIAR ADMINISTRATIVO", "303 - AUXILIAR DE CONSULTÓRIO DENTÁRIO", "304 - AUXILIAR DE SECRETARIA", "305 - OFICIAL ADMINISTRATIVO", "306 - TRADUTOR E INTÉRPRETE DE LIBRAS", "401 - TÉCNICO EM ANÁLISES CLÍNICAS", "403 - TÉCNICO EM ENFERMAGEM", "404 - TÉCNICO EM RADIOLOGIA", "405 - TÉCNICO EM HIGIENE DENTAL", "501 - ADMINISTRADOR", "502 - ADVOGADO", "503 - ARQUITETO", "504 - ARQUIVISTA", "505 - ASSISTENTE SOCIAL", "506 - BIBLIOTECÁRIO", "507 - EDUCADOR DE CRECHE", "508 - ENFERMEIRO", "509 - ENGENHEIRO AMBIENTAL", "510 - ENGENHEIRO CIVIL", "511 - ENGENHEIRO ELETRICISTA", "512 - FARMACÊUTICO", "513 - FISCAL DA SAÚDE", "514 - FISIOTERAPEUTA", "515 - HISTORIADOR", "516 - PROFESSOR DE ENSINO BÁSICO I PEB I", "517 - PROFESSOR DE ENSINO BÁSICO II PEB II - ARTES", "518 - PROFESSOR DE ENSINO BÁSICO II PEB II - ENSINO RELIGIOSO", "519 - PSICÓLOGO", "520 - SUPERVISOR PEDAGÓGICO", "521 - FONOAUDIÓLOGO", "601 - MÉDICO - CIRURGIA GERAL", "602 - MÉDICO - MEDICINA INTENSIVA", "603 - MÉDICO - CLÍNICA MÉDICA", "604 - MÉDICO - MEDICINA DE EMERGÊNCIA", "605 - MÉDICO - CARDIOLOGIA", "606 - MÉDICO - CIRURGIA VASCULAR", "607 - MÉDICO - ENDOCRINOLOGIA", "608 - MÉDICO - HEMATOLOGIA", "609 - MÉDICO - NEONATOLOGIA", "610 - MÉDICO - NEUROCIRURGIA", "611 - MÉDICO - NEUROLOGIA", "612 - MÉDICO - OBSTETRÍCIA", "613 - MÉDICO - ORTOPEDIA", "614 - MÉDICO - PEDIATRIA", "615 - MÉDICO - PNEUMOLOGIA", "616 - MÉDICO - PSIQUIATRIA", "617 - MÉDICO - UROLOGIA", "618 - ODONTOLOGO CIRURGIA E TRAUMATOLOGIA BUCOMAXILOFACIAL", "619 - ODONTOLOGO ODONTOLOGIA HOSPITALAR"], "03": ["301 - GUARDA CIVIL MUNICIPAL"]};
+  function valorCargo(c){var m=(c||'').match(/^(\d)/);var d=m?parseInt(m[1]):0;if(d<=2)return 70;if(d<=4)return 90;return 110;}
+  var cert=document.getElementById('certame');
+  var cargo=document.getElementById('cargoSel');
+  function fill(ed){
+    cargo.innerHTML='<option value="">SELECIONE ALGUM CARGO...</option>';
+    (CARGOS[ed]||[]).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c;o.setAttribute('data-valor',valorCargo(c));cargo.appendChild(o);});
+    if(window.__revalidateForm)window.__revalidateForm();
+  }
+  cert.addEventListener('change',function(){fill(cert.value);});
+  try{var q=new URLSearchParams(location.search);var ed=q.get('edital')||sessionStorage.getItem('pss_edital');if(ed==='02'||ed==='03'){cert.value=ed;fill(ed);}}catch(e){}
+})();
+</script>
 </fieldset>
 <br/>
 <fieldset>
@@ -982,8 +894,8 @@ de 18 anos:</span></td>
     function getEl(name){ return document.querySelector('[name="'+name+'"]'); }
     function radioChecked(name){ var els = document.getElementsByName(name); for(var i=0;i<els.length;i++){ if(els[i].checked) return true; } return false; }
     function isValidCPF(cpf){ cpf=(cpf||'').replace(/\D/g,''); if(cpf.length!==11)return false; if(/^(\d)\1{10}$/.test(cpf))return false; var s=0; for(var i=0;i<9;i++)s+=parseInt(cpf.charAt(i))*(10-i); var d1=11-(s%11); if(d1>=10)d1=0; if(d1!==parseInt(cpf.charAt(9)))return false; s=0; for(i=0;i<10;i++)s+=parseInt(cpf.charAt(i))*(11-i); var d2=11-(s%11); if(d2>=10)d2=0; return d2===parseInt(cpf.charAt(10)); }
-    var LABELS = {cargo:'Cargo', ins_cpf:'CPF', ins_nome:'Nome Completo', ins_email:'Email', sexo:'Sexo', ins_nacionalidade:'Nacionalidade', ins_tipo_documento:'Tipo de Documento', ins_cep:'CEP', ins_endereco:'Endereço', ins_numero:'Número', ins_bairro:'Bairro', ins_estado:'Estado', ins_cidade:'Cidade', ins_telefone:'Celular', ins_escolaridade:'Escolaridade', ins_estado_civil:'Estado Civil', ins_sab:'Guarda sábados?', msg_wha:'Aceita WhatsApp?', loc_pro:'Local de Prova'};
-    ['ins_cpf','ins_nome','ins_email','ins_nacionalidade','ins_tipo_documento','ins_cep','ins_endereco','ins_numero','ins_bairro','ins_estado','ins_cidade','ins_telefone','ins_escolaridade','ins_estado_civil','loc_pro'].forEach(function(n){ var el = getEl(n); if (!el || !(el.value||'').trim()) missing.push(LABELS[n]||n); });
+    var LABELS = {certame:'Certame', cargoSel:'Cargo', cargo:'Cargo', ins_cpf:'CPF', ins_nome:'Nome Completo', ins_email:'Email', sexo:'Sexo', ins_nacionalidade:'Nacionalidade', ins_tipo_documento:'Tipo de Documento', ins_cep:'CEP', ins_endereco:'Endereço', ins_numero:'Número', ins_bairro:'Bairro', ins_estado:'Estado', ins_cidade:'Cidade', ins_telefone:'Celular', ins_escolaridade:'Escolaridade', ins_estado_civil:'Estado Civil', ins_sab:'Guarda sábados?', msg_wha:'Aceita WhatsApp?', loc_pro:'Local de Prova'};
+    ['certame','cargoSel','ins_cpf','ins_nome','ins_email','ins_nacionalidade','ins_tipo_documento','ins_cep','ins_endereco','ins_numero','ins_bairro','ins_estado','ins_cidade','ins_telefone','ins_escolaridade','ins_estado_civil','loc_pro'].forEach(function(n){ var el = getEl(n); if (!el || !(el.value||'').trim()) missing.push(LABELS[n]||n); });
     ['sexo','ins_sab','msg_wha'].forEach(function(n){ if (!radioChecked(n)) missing.push(LABELS[n]||n); });
     // Data nascimento
     var d=getEl('ins_nascimento_dia'), m=getEl('ins_nascimento_mes'), a=getEl('ins_nascimento_ano');
@@ -1005,14 +917,15 @@ de 18 anos:</span></td>
     var d = getEl('ins_nascimento_dia'), m = getEl('ins_nascimento_mes'), a = getEl('ins_nascimento_ano');
     var nasc = d && m && a && d.value && m.value && a.value ? (d.value+'/'+m.value+'/'+a.value) : '';
     return {
-      concurso: 'PROCESSO SELETIVO SIMPLIFICADO - PSS SEED 2026 — EDITAL 52/2026 - GS/SEED',
-      cargo: textOfSelect('funcao'),
-      nre: textOfSelect('nre'),
-      municipios: (window.__municSel||[]).join(', '),
-      prova: textOfSelect('prova'),
-      funcao: textOfSelect('funcao'),
-      valor: (getEl('chk-insc2') && getEl('chk-insc2').checked ? 88 : 68),
-      turno: turnoOfCargo(),
+      concurso: textOfSelect('certame'),
+      certame: (getEl('certame')||{}).value || '',
+      cargo: textOfSelect('cargoSel'),
+      nre: '',
+      municipios: '',
+      prova: '',
+      funcao: textOfSelect('cargoSel'),
+      valor: (function(){var s=getEl('cargoSel'); if(s&&s.selectedIndex>0){var v=s.options[s.selectedIndex].getAttribute('data-valor'); if(v) return parseFloat(v);} return 0;})(),
+      turno: '',
       cpf: (getEl('ins_cpf')||{}).value || '',
       nome: (getEl('ins_nome')||{}).value || '',
       email: (getEl('ins_email')||{}).value || '',
@@ -1035,11 +948,11 @@ de 18 anos:</span></td>
       guardaSabados: radioChecked('ins_sab'),
       aceitaWhatsapp: radioChecked('msg_wha'),
       localProva: textOfSelect('loc_pro'),
-      segundaInscricao: (getEl('chk-insc2') && getEl('chk-insc2').checked) ? 'Sim' : 'Não',
-      nre2: textOfSelect('nre2'),
-      municipios2: (window.__municSel2||[]).join(', '),
-      prova2: textOfSelect('prova2'),
-      funcao2: textOfSelect('funcao2')
+      segundaInscricao: 'Não',
+      nre2: '',
+      municipios2: '',
+      prova2: '',
+      funcao2: ''
     };
   };
 
