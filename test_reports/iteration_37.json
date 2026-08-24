@@ -1,0 +1,22 @@
+{
+  "summary": "Verified bug fix: 'Local de Prova' propagation from /inscricao.html to /confirmar-dados.html. Payload builder now uses textOfSelect('loc_pro') and returns the selected city text. All 3 requested tests passed.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {"ui_bugs": [], "integration_issues": [], "design_issues": []},
+  "tests_executed": [
+    {"name": "T1: __collectFormData().localProva returns selected city text", "result": "PASS", "detail": "Selected 'MARINGÁ' on #cidadeProva -> window.__collectFormData().localProva === 'MARINGÁ'"},
+    {"name": "T2: Value propagates to confirmar-dados.html", "result": "PASS", "detail": "Seeded sessionStorage.inscricaoDados from real __collectFormData; confirmation page rendered 'Local de Prova: MARINGÁ' (not '—')"},
+    {"name": "T3: Regression on city select", "result": "PASS", "detail": "#cidadeProva has 30 non-empty city options (+1 placeholder = 31 total), select is required=true, btn-inscrever exists"}
+  ],
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Minor: /app/frontend/public/inscricao.html declares getEl twice (lines 950 and 1000) inside the same scope area — harmless but redundant duplication.",
+    "The confirmation page fallback `d.localProva || d.cidadeProva` is defensive but d.cidadeProva is never set by __collectFormData; consider removing to simplify."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "N/A", "frontend": "100%"},
+  "seed_data_creation": "sessionStorage.inscricaoDados seeded from real __collectFormData() output as directed",
+  "retest_needed": false,
+  "should_main_agent_self_test": false,
+  "context_for_next_testing_agent": "Bug fix on localProva verified end-to-end. City select #cidadeProva has name='loc_pro' and textOfSelect resolves by name. 30 cities available."
+}
